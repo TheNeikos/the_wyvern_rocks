@@ -1,0 +1,31 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">The Wyvern Rocks</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+      <ul class="nav navbar-nav">
+        <li>
+          <%= link_to "Users", users_path %>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user.nil? %>
+          <%= render "shared/header_login" %>
+        <% else %>
+          <li>
+            <a class="dropdown-toggle" href="<%= user_path(current_user)%>" data-toggle="dropdown" role="button">
+              <%= current_user.name %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Logout", logout_users_path, method: :post %></li>
+            </ul>
+          </li>
+          </div>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

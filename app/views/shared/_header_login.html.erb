@@ -1,0 +1,27 @@
+<li class="<%= flash[:login_error].nil? ? "" : "open" %>">
+  <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button">
+    Login/Register
+    <span class="caret"></span>
+  </a>
+  <div class="form-login dropdown-menu">
+    <%= form_tag(login_users_path, method: "post", class: "form-horizontal" ) do %>
+      <% unless flash[:login_error].nil? %>
+        <div class="bg-warning">
+          <%= flash[:login_error] %>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= label_tag :user_email_address, "E-Mail" %>
+        <%= email_field_tag :'user[email_address]', flash[:login_try_email], class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :user_password, "Password" %>
+        <%= password_field_tag :'user[password]', nil, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= submit_tag "Login" %>
+        <%= link_to "Register", new_user_path, :class => "pull-right" %>
+      </div>
+    <% end %>
+  </div>
+</li>
