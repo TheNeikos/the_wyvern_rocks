@@ -14,3 +14,21 @@ body {
     padding: 6px 15px 6px 15px;
   }
 }
+
+.field_with_errors input {
+  border-color: $brand-warning;
+
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+form ul.errors {
+  list-style: none;
+  margin: 0;
+  padding-left: 10px;
+  padding: 5px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+  background-color: $brand-warning;
+}
