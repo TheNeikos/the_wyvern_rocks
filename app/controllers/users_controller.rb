@@ -3,10 +3,20 @@ class UsersController < ApplicationController
   after_action :verify_authorized, :except => [:new, :create, :index, :show, :login]
   # GET
   def edit
+    @user = User.find(params[:id])
+    authorize @user
   end
 
   # POST
   def update
+    @user = User.find(params[:id])
+    authorize @user
+    if @user.update(user_params)
+      flash[:notice] = "Saved Profile successfully."
+      redirect_to @user
+    else
+      render :edit
+    end
   end
 
   # GET
@@ -62,6 +72,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:password, :email_address, :email_address_confirmation, :name)
+    params.require(:user).permit(:password, :email_address, :email_address_confirmation, :name, :old_password)
   end
 end
