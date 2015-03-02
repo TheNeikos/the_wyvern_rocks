@@ -16,4 +16,12 @@ class UserPolicy < ApplicationPolicy
   def logout?
     user
   end
+
+  def new?
+    user and (user == record or user.is_admin)
+  end
+
+  def update?
+    user and (user == record or user.is_admin)
+  end
 end
