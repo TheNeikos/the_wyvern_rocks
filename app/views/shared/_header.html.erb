@@ -21,11 +21,16 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "Logout", logout_users_path, method: :post %></li>
+              <% if current_user.is_admin %>
+                <li>
+                  <%= link_to "Admin Dashboard", admin_path %>
+                </li>
+              <% end %>
             </ul>
           </li>
-          </div>
+        </div>
         <% end %>
       </ul>
-    </div>
+  </div>
   </div>
 </nav>
