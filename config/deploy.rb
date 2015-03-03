@@ -2,7 +2,7 @@
 lock '3.3.5'
 
 set :application, 'the_wyvern_rocks'
-set :repo_url, 'git@github.com/TheNeikos/the_wyvern_rocks.git'
+set :repo_url, 'git@github.com:TheNeikos/the_wyvern_rocks.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -24,6 +24,9 @@ set :deploy_to, '/var/www/the_wyvern_rocks'
 
 # Default value for :linked_files is []
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml')
+
+# Skip migrations if none added
+set :conditionally_migrate, true
 
 # Default value for linked_dirs is []
 # set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
