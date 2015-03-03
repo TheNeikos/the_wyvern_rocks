@@ -34,10 +34,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pundit', '~> 0.3.0'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn', group: :production
 
 # Use Thin as the app server
-gem 'thin'
+gem 'thin', group: :development
 
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
