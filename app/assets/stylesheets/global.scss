@@ -13,6 +13,10 @@ body {
 
     padding: 6px 15px 6px 15px;
   }
+
+  a.btn-link.disabled {
+    pointer-events: auto;
+  }
 }
 
 .field_with_errors input {

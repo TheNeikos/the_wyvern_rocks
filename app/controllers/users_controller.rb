@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include UserHelper
-  after_action :verify_authorized, :except => [:new, :create, :index, :show, :login]
+  after_action :verify_authorized, :except => [:index, :show, :login]
   # GET
   def edit
     @user = User.find(params[:id])
@@ -34,6 +34,7 @@ class UsersController < ApplicationController
   def create
     redirect_to '/' if current_user
     @user = User.new(user_params)
+    authorize @user
 
     if @user.save
       redirect_to @user
@@ -46,6 +47,7 @@ class UsersController < ApplicationController
   def new
     redirect_to '/' if current_user
     @user = User.new
+    authorize @user
   end
 
   # POST

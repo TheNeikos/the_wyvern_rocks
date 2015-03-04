@@ -20,7 +20,13 @@
       </div>
       <div class="form-group">
         <%= submit_tag "Login" %>
-        <%= link_to "Register", new_user_path, :class => "pull-right" %>
+        <% if policy(User).new? %>
+          <%= link_to "Register", new_user_path, :class => "pull-right btn" %>
+        <% else %>
+          <a class="disabled pull-right btn btn-link" title="Registrations are currrently disabled.">
+            Register
+          </a>
+        <% end %>
       </div>
     <% end %>
   </div>
