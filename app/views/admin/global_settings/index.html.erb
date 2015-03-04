@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <h1>Global Application Settings</h1>
+
+      <table class="table table-hover" id="settings">
+        <thead>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Value</th>
+          <th>Type</th>
+          <th>Save</th>
+        </thead>
+        <tbody>
+          <% @settings.each do |s| %>
+            <%= form_for [:admin, s], remote: true do |t| %>
+              <tr data-id="<%= s.id %>">
+                <td><%= s.name %></td>
+                <td><%= s.description %></td>
+                <td><%= t.text_field :value %></td>
+                <td><%= s.setting_type %></td>
+                <td><%= t.submit %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

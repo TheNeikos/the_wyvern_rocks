@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    resources :global_settings, :only => [:index, :update]
     get '' => 'dashboard#index'
   end
 

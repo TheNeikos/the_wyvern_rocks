@@ -1,0 +1,20 @@
+var row = $('#settings tr[data-id=<%= @setting.id %>]');
+var sibl = row.next();
+console.log(sibl);
+if (!sibl.length || !sibl.hasClass("ajax-reply")) {
+  sibl =  $("<tr class='ajax-reply'><td colspan=5></td></tr>");
+  sibl.insertAfter(row);
+}
+data = sibl.find("td");
+if (<%= @setting.errors.any? ? 'true' : 'false' %>) {
+  data.text("There have been errors saving this setting.");
+  sibl.addClass("bg-warning");
+} else {
+  data.text("Succesfully saved.");
+  sibl.addClass("bg-info");
+  setTimeout(function() {
+    sibl.fadeOut(undefined, function remove(){
+      sibl.remove();
+    });
+  }, 3000);
+}
