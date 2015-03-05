@@ -1,2 +1,13 @@
-<h1>Admin::Dashboard#index</h1>
-<p>Find me in app/views/admin/dashboard/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <h1>Admin Dashboard</h1>
+      <ul>
+        <li><%= link_to "Global Settings", admin_global_settings_path, 'data-no-turbolink' => true %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+

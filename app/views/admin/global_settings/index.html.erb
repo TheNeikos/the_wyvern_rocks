@@ -14,15 +14,15 @@
         </thead>
         <tbody>
           <% @settings.each do |s| %>
-            <%= form_for [:admin, s], remote: true do |t| %>
-              <tr data-id="<%= s.id %>">
+            <tr data-id="<%= s.id %>">
+              <%= form_for [:admin, s], remote: true do |t| %>
                 <td><%= s.name %></td>
                 <td><%= s.description %></td>
                 <td><%= t.text_field :value %></td>
                 <td><%= s.setting_type %></td>
                 <td><%= t.submit %></td>
-              </tr>
-            <% end %>
+              <% end %>
+            </tr>
           <% end %>
         </tbody>
       </table>
