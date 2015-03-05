@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
 
   attr_accessor :old_password
 
+  has_many :blogs
+  has_many :blog_posts
+
   private
 
   def old_password_matches

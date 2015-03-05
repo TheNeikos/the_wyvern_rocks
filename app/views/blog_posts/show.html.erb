@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <%= render 'shared/breadcrumbs', links: [
+        { name: "Blog Index", url: blogs_path },
+        { name: @blog.name, url: @blog },
+        { name: @post.name, url: [@blog, @post] },
+      ] %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <h1 class="clearfix">
+        <%= @post.name %>
+        <% if policy(@post).update? %>
+          <small><%= link_to "Edit", edit_blog_blog_post_path(@post.blog, @post) %></small>
+        <% end %>
+        <small class="pull-right">
+          By <%= @post.user.name %>
+        </small>
+      </h1>
+      <div>
+        <%= raw @post.content.bbcode_to_html_with_formatting %>
+      </div>
+
+      <div class="well">
+        <%= link_to("Not Published", edit_blog_blog_post_path(@post.blog, @post),
+                    class: 'btn btn-warning') unless @post.published %>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -11,10 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304091550) do
+ActiveRecord::Schema.define(version: 20150305120045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blog_posts", force: :cascade do |t|
+    t.integer  "blog_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "content"
+    t.boolean  "published"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "blog_posts", ["blog_id"], name: "index_blog_posts_on_blog_id", using: :btree
+  add_index "blog_posts", ["user_id"], name: "index_blog_posts_on_user_id", using: :btree
+
+  create_table "blogs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "blogs", ["user_id"], name: "index_blogs_on_user_id", using: :btree
 
   create_table "global_settings", force: :cascade do |t|
     t.string   "name"
@@ -34,4 +57,7 @@ ActiveRecord::Schema.define(version: 20150304091550) do
     t.boolean  "is_admin"
   end
 
+  add_foreign_key "blog_posts", "blogs"
+  add_foreign_key "blog_posts", "users"
+  add_foreign_key "blogs", "users"
 end

@@ -1,0 +1,10 @@
+<% if model.errors.full_messages_for(field).any? %>
+  <ul class="errors">
+    <% model.errors.full_messages_for(field).each do |e| %>
+      <li>
+        <span class="glyphicon glyphicon-alert"></span>
+        <small><%= e %></small>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

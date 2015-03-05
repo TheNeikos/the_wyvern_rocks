@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <%= render 'shared/breadcrumbs', links: [
+        { name: "Blog Index", url: blogs_path },
+        { name: @blog.name, url: @blog },
+      ] %>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <h1 class="clearfix">
+        <%= @blog.name %>
+        <% if policy(@blog).update? %>
+          <small><%= link_to "Edit", edit_blog_path(@blog) %></small>
+        <% end %>
+        <small class="pull-right">
+          By <%= @blog.user.name %>
+      </small>
+      </h1>
+      <div class="well">
+        <%= raw @blog.description.bbcode_to_html_with_formatting %>
+      </div>
+
+      <div class="well">
+        <% if policy(@blog.posts.build).create? %>
+          <%= link_to "New Blog Post", new_blog_blog_post_path(@blog) %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <h1>Posts </h1>
+      <ol>
+        <% policy_scope(@blog.posts).each do |bp| %>
+          <% next if bp.new_record? %>
+          <li class="<%= "text-muted" unless bp.published %>"><%= link_to bp.name, [@blog, bp] %></li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+</div>

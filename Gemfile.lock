@@ -40,6 +40,7 @@ GEM
     autoprefixer-rails (5.1.7)
       execjs
       json
+    bb-ruby (1.1.0)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -203,6 +204,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bb-ruby (~> 1.1.0)
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.3.3)
   byebug

@@ -1,0 +1,11 @@
+<ol class="breadcrumb">
+  <% links.each do |l|%>
+    <li class="<%= "active" if links.last == l %>">
+      <% if l[:url] and not links.last == l %>
+        <%= link_to l[:name], l[:url] %>
+      <% else %>
+        <%= l[:name] %>
+      <% end %>
+    </li>
+  <% end %>
+</ol>

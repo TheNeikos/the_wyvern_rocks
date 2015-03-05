@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <%= render 'shared/breadcrumbs', links: [
+        { name: "Blog Index", url: blogs_path },
+        { name: @blog.name, url: @blog },
+        { name: "Creating new post", url: nil },
+      ] %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <h1>Creating a new post</h1>
+      <%= form_for [@blog, @post] do |t|  %>
+        <div class="form-group">
+          <%= t.label :name, "Title" %>
+          <%= t.text_field :name, class: "form-control" %>
+          <%= render 'shared/forms/errors_for', model: @post, field: :name %>
+        </div>
+        <div class="checkbox">
+          <%= t.label :published do %>
+            <%= t.check_box :published %>
+            Published
+          <% end %>
+          <%= render 'shared/forms/errors_for', model: @post, field: :published %>
+        </div>
+        <div class="form-group">
+          <%= t.label :content %>
+          <%= t.text_area :content, class: "form-control", rows: 10 %>
+          <%= render 'shared/forms/errors_for', model: @post, field: :content %>
+        </div>
+        <%= t.submit class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

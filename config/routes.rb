@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :blogs do
+    resources :blog_posts
+  end
+
   root 'index#dashboard'
 
   # The priority is based upon order of creation: first created -> highest priority.
