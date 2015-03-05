@@ -4,7 +4,7 @@ class BlogPostPolicy < ApplicationPolicy
       if user and user.is_admin
         scope.all
       else
-        scope.where('published = true OR user_id = ?', user.id)
+        scope.where('published = true OR user_id = ?', (user && user.id || 0))
       end
     end
   end
