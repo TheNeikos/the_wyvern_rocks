@@ -37,6 +37,6 @@ set :conditionally_migrate, false
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-require 'seed-fu/capistrano'
+require 'seed-fu/capistrano3'
 
 before 'deploy:publishing', 'db:seed_fu'
