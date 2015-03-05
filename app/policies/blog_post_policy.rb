@@ -10,14 +10,14 @@ class BlogPostPolicy < ApplicationPolicy
   end
 
   def create?
-    user and (user.is_admin || record.blog.user == user)
+    user && (user.is_admin || record.blog.user == user)
   end
 
   def show?
-    user and (user.is_admin || record.published || record.user == user)
+    user && (user.is_admin || record.user == user) || true
   end
 
   def update?
-    user and (user.is_admin || record.user == user)
+    user && (user.is_admin || record.user == user)
   end
 end
