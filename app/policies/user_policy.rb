@@ -17,7 +17,7 @@ class UserPolicy < ApplicationPolicy
     user
   end
 
-  def new?
+  def create?
     return false if GlobalSetting[:registrations_enabled].value == '0'
     return false if user and not user.is_admin
     true
