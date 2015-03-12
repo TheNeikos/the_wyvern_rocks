@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <%= render 'shared/breadcrumbs', links: [
+        { name: "Forum", url: root_path },
+        { name: @forum.dashboard_category.name, url: @forum.dashboard_category },
+        { name: @forum.name, url: @forum },
+        { name: @topic.name, url: [@forum, @topic] },
+      ] %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <h1>
+        <%= @topic.name %>
+      </h1>
+      <p><small><%= link_to @topic.user.name, @topic.user %></small></p>
+      <div class="posts">
+        <%= render @topic.posts.order :id %>
+      </div>
+      <div class="well">
+          <% if policy(@topic.posts.new).create? %>
+            <%= link_to "New Reply", new_forum_topic_post_path(@forum, @topic), class: "btn btn-info" %>
+          <% end %>
+      </div>
+
+      <div class="well">
+        <%= render partial: 'posts/new_form', locals: {remote: true} %>
+      </div>
+    </div>
+  </div>
+</div>
