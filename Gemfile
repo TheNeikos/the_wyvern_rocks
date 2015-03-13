@@ -9,6 +9,8 @@ gem 'pg'
 gem 'bootstrap-sass', '~> 3.3.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# for nice icons
+gem 'font-awesome-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -30,6 +32,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use BBCode for parsing
 gem 'bb-ruby', '~> 1.1.0'
 
+# Devise for user authentication
+gem 'devise'
+
 # Use seed-fu for idempotent seeding
 gem 'seed-fu', '~> 2.3'
 
@@ -39,27 +44,19 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Pundit for Authorization
 gem 'pundit', '~> 0.3.0'
 
-# Use Unicorn as the app server
-gem 'unicorn', group: :production
-
-# Use Thin as the app server
-gem 'thin', group: :development
-
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
-gem 'capistrano-bundler', group: :development
-gem 'capistrano-rvm', group: :development
-gem 'capistrano-passenger', group: :development
-gem 'capistrano-postgresql', group: :development
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+group :development do
+  gem 'thin'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
+  gem 'capistrano-passenger'
+  gem 'capistrano-postgresql'
+  gem 'quiet_assets' # Turns off the Rails asset pipeline log
+  gem 'bullet' # help reduce sql query speeds
+  gem 'lol_dba' # helps scan for better indexing
 end
 
+group :production do
+  gem 'unicorn' # Use Unicorn as the app server
+end
