@@ -13,3 +13,4 @@
 /tmp
 
 /.capistrano
+/config/database.yml
