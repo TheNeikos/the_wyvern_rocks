@@ -14,3 +14,4 @@
 
 /.capistrano
 /config/database.yml
+*/database.yml
