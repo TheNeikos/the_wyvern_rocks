@@ -1,4 +1,4 @@
-class DashboardCategoryController < ApplicationController
+class DashboardCategoriesController < ApplicationController
   def show
     @category = DashboardCategory.find(params[:id])
 
