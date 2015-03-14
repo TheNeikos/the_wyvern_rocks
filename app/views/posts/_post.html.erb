@@ -2,11 +2,11 @@
   <%= link_to post.user.name, post.user %>, <%= distance_of_time_in_words_to_now post.created_at %> ago
   <span class="pull-right">
     <% if policy(post).edit? %>
-      <%= link_to "Edit", edit_forum_topic_post_path(post.topic.forum, post.topic, post), remote: true %>
+      <%= link_to "Edit", edit_post_path(post), remote: true, class: "btn btn-sm btn-info"%>
     <% end %>
   </span>
   <hr>
-  <div class="content">
+  <div class="content" data-raw="<%= post.content %>">
     <%= raw post.content.bbcode_to_html_with_formatting %>
   </div>
 </div>

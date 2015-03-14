@@ -1,37 +1,38 @@
 class TopicsController < ApplicationController
-  before_filter :load_forum
 
   def index
   end
 
   def new
-    @topic = @forum.topics.build
+    forum = Forum.find(params[:forum_id])
+    @topic = forum.topics.new
 
     authorize @topic
   end
 
   def create
-    @topic = @forum.topics.build topic_params
+    forum = Forum.find(params[:forum_id])
+    @topic = forum.topics.build topic_params
 
     authorize @topic
 
     @topic.user = current_user
 
     if @topic.save
-      redirect_to [@forum, @topic]
+      redirect_to [@topic.forum, @topic]
     else
       render :new
     end
   end
 
   def edit
-    @topic = @forum.topics.includes(:posts).find(params[:id])
+    @topic = Topic.includes(:posts).find(params[:id])
 
     authorize @topic
   end
 
   def update
-    @topic = @forum.topics.includes(:posts).find(params[:id])
+    @topic = Topic.includes(:posts).find(params[:id])
 
     authorize @topic
 
@@ -39,7 +40,7 @@ class TopicsController < ApplicationController
 
     if @topic.save
       respond_to do |format|
-        format.html { redirect_to [@forum, @topic] }
+        format.html { redirect_to [@topic.forum, @topic] }
         format.js
       end
     else
@@ -48,10 +49,11 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = @forum.topics.includes(:posts).find(params[:id])
+    @topic = Topic.includes(:posts).find(params[:id])
 
     authorize @topic
 
+    @post = @topic.posts.build
     @posts = policy_scope(@topic.posts).includes(:user).paginate(:page => params[:page])
   end
 
@@ -59,10 +61,6 @@ class TopicsController < ApplicationController
   end
 
   private
-
-  def load_forum
-    @forum = Forum.find(params[:forum_id])
-  end
 
   def topic_params
     params.require(:topic).permit(:content, :name)

@@ -4,9 +4,9 @@
     <div class="col-md-8">
       <%= render 'shared/breadcrumbs', links: [
         { name: "Forum", url: root_path },
-        { name: @forum.dashboard_category.name, url: @forum.dashboard_category },
-        { name: @forum.name, url: @forum },
-        { name: @topic.name, url: [@forum, @topic] },
+        { name: @post.topic.forum.dashboard_category.name, url: @post.topic.forum.dashboard_category },
+        { name: @post.topic.forum.name, url: @post.topic.forum },
+        { name: @post.topic.name, url: @post.topic },
         { name: "New Post", url: nil },
       ] %>
   </div>

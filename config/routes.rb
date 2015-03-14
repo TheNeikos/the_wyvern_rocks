@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :forums, only: [:show, :create, :update, :delete] do
+  resources :forums, only: [:show, :create, :update, :delete], shallow: true do
     resources :topics do
       resources :posts, only: [:new, :create, :edit, :update, :delete]
     end

@@ -1,22 +1,22 @@
 class PostsController < ApplicationController
 
-  before_filter :load_forum_and_topic
-
   def new
-    @post = @topic.posts.build
+    topic = Topic.find(params[:topic_id])
+    @post = topic.posts.build
 
     authorize @post
   end
 
   def create
-    @post = @topic.posts.build post_params
+    topic = Topic.find(params[:topic_id])
+    @post = topic.posts.build post_params
     @post.user = current_user
 
     authorize @post
 
     if @post.save
       respond_to do |format|
-        format.html { redirect_to [@forum, @topic] }
+        format.html { redirect_to [topic.forum, topic] }
         format.js
       end
     else
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
 
     if @post.save
       respond_to do |format|
-        format.html { redirect_to [@forum, @topic] }
+        format.html { redirect_to [@post.topic.forum, @post.topic] }
         format.js
       end
     else

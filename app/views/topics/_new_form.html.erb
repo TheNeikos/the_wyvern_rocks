@@ -1,4 +1,4 @@
-<%= form_for [@forum, @topic], remote: (defined? remote ? true : false)do |t|  %>
+<%= form_for @topic, remote: (defined? remote ? true : false) do |t|  %>
   <div class="form-group">
     <%= t.label :name %>
     <%= t.text_field :name, class: "form-control" %>
@@ -10,5 +10,7 @@
     <%= render 'shared/forms/errors_for', model: @topic, field: :content %>
   </div>
   <%= t.submit class: "btn btn-primary" %>
-  <button class="btn btn-warning">Cancel</button>
+  <% if @topic.persisted? %>
+    <button class="btn btn-warning cancel" data-content="<%=j @topic.content%>" data-name="<%=j @topic.name%>">Cancel</button>
+  <% end %>
 <% end %>

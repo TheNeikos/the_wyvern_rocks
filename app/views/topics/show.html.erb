@@ -4,9 +4,9 @@
     <div class="col-md-8">
       <%= render 'shared/breadcrumbs', links: [
         { name: "Forum", url: root_path },
-        { name: @forum.dashboard_category.name, url: @forum.dashboard_category },
-        { name: @forum.name, url: @forum },
-        { name: @topic.name, url: [@forum, @topic] },
+        { name: @topic.forum.dashboard_category.name, url: @topic.forum.dashboard_category },
+        { name: @topic.forum.name, url: @topic.forum },
+        { name: @topic.name, url: @topic },
       ] %>
   </div>
   </div>
@@ -27,7 +27,7 @@
       </div>
       <div class="well">
         <% if policy(@topic.posts.new).create? %>
-          <%= link_to "New Reply", new_forum_topic_post_path(@forum, @topic), class: "btn btn-info" %>
+          <%= link_to "New Reply", new_topic_post_path(@topic), class: "btn btn-info" %>
         <% end %>
 
         <div>
