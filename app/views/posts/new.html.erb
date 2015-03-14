@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <%= render 'shared/breadcrumbs', links: [
+        { name: "Forum", url: root_path },
+        { name: @post.topic.forum.dashboard_category.name, url: @post.topic.forum.dashboard_category },
+        { name: @post.topic.forum.name, url: @post.topic.forum },
+        { name: @post.topic.name, url: @post.topic },
+        { name: "New Post", url: nil },
+      ] %>
+  </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <h1>Creating a new post</h1>
+      <%= render 'posts/new_form' %>
+    </div>
+  </div>
+</div>

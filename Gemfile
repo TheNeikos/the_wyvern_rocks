@@ -38,6 +38,10 @@ gem 'devise'
 # Use seed-fu for idempotent seeding
 gem 'seed-fu', '~> 2.3'
 
+# We want pagination!
+gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate-bootstrap', '~> 1.0.1'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 

@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314034721) do
+
+ActiveRecord::Schema.define(version: 20150314161007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +40,21 @@ ActiveRecord::Schema.define(version: 20150314034721) do
 
   add_index "blogs", ["user_id"], name: "index_blogs_on_user_id", using: :btree
 
+  create_table "dashboard_categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "forums", force: :cascade do |t|
+    t.string   "name"
+    t.string   "order"
+    t.integer  "dashboard_category_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
   create_table "global_settings", force: :cascade do |t|
     t.string   "name"
     t.string   "value"
@@ -46,6 +62,26 @@ ActiveRecord::Schema.define(version: 20150314034721) do
     t.integer  "setting_type", default: 0
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string   "name"
+    t.string   "type"
+    t.integer  "user_id"
+    t.integer  "forum_id"
+    t.string   "content"
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.datetime "last_post_created_at", default: '2015-03-14 19:07:55'
   end
 
   create_table "users", force: :cascade do |t|

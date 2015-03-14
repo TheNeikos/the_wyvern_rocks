@@ -1,0 +1,16 @@
+<%= form_for @topic, remote: (defined? remote ? true : false) do |t|  %>
+  <div class="form-group">
+    <%= t.label :name %>
+    <%= t.text_field :name, class: "form-control" %>
+    <%= render 'shared/forms/errors_for', model: @topic, field: :name %>
+  </div>
+  <div class="form-group">
+    <%= t.label :content %>
+    <%= t.text_area :content, class: "form-control", rows: 10 %>
+    <%= render 'shared/forms/errors_for', model: @topic, field: :content %>
+  </div>
+  <%= t.submit class: "btn btn-primary" %>
+  <% if @topic.persisted? %>
+    <button class="btn btn-warning cancel" data-content="<%=j @topic.content%>" data-name="<%=j @topic.name%>">Cancel</button>
+  <% end %>
+<% end %>

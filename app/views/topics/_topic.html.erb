@@ -1,0 +1,19 @@
+<div class="well">
+  <div class="row">
+    <div class="col-xs-9">
+      <%= link_to topic.name, topic %>
+    </div>
+    <div class="col-xs-3">
+      By <%= link_to topic.user.name, topic.user %>,
+      <%= distance_of_time_in_words_to_now topic.created_at %> ago
+      <hr>
+      <% unless topic.posts.empty? %>
+        Last Post by: <%= link_to topic.posts.last.user.name, topic.posts.last.user %>,
+        <%= distance_of_time_in_words_to_now topic.posts.last.created_at %> ago
+      <% else %>
+        Last Post by: <%= link_to topic.user.name, topic.user %>,
+        <%= distance_of_time_in_words_to_now topic.created_at %> ago
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <%= render 'shared/breadcrumbs', links: [
+        { name: "Forum", url: root_path },
+        { name: @forum.dashboard_category.name, url: @forum.dashboard_category },
+        { name: @forum.name, url: @forum },
+      ] %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <h1>
+        <%= @forum.name %>
+        <%= link_to "New Topic", new_forum_topic_path(@forum), class: "btn btn-info btn-sm pull-right" %>
+      </h1>
+      <%= render @forum.topics.order "last_post_created_at DESC" %>
+    </div>
+  </div>
+</div>
