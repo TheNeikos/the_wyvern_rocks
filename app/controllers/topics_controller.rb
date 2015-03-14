@@ -34,6 +34,8 @@ class TopicsController < ApplicationController
     @topic = @forum.topics.find(params[:id])
 
     authorize @topic
+
+    @posts = policy_scope(@topic.posts).paginate(:page => params[:page])
   end
 
   def destroy
