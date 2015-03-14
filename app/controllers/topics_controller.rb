@@ -25,17 +25,34 @@ class TopicsController < ApplicationController
   end
 
   def edit
+    @topic = @forum.topics.includes(:posts).find(params[:id])
+
+    authorize @topic
   end
 
   def update
-  end
-
-  def show
-    @topic = @forum.topics.find(params[:id])
+    @topic = @forum.topics.includes(:posts).find(params[:id])
 
     authorize @topic
 
-    @posts = policy_scope(@topic.posts).paginate(:page => params[:page])
+    @topic.update topic_params
+
+    if @topic.save
+      respond_to do |format|
+        format.html { redirect_to [@forum, @topic] }
+        format.js
+      end
+    else
+      render :edit
+    end
+  end
+
+  def show
+    @topic = @forum.topics.includes(:posts).find(params[:id])
+
+    authorize @topic
+
+    @posts = policy_scope(@topic.posts).includes(:user).paginate(:page => params[:page])
   end
 
   def destroy

@@ -10,19 +10,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
       <h1>Creating a new topic</h1>
-      <%= form_for [@forum, @topic] do |t|  %>
-        <div class="form-group">
-          <%= t.label :name %>
-          <%= t.text_field :name, class: "form-control" %>
-          <%= render 'shared/forms/errors_for', model: @topic, field: :name %>
-        </div>
-        <div class="form-group">
-          <%= t.label :content %>
-          <%= t.text_area :content, class: "form-control", rows: 10 %>
-          <%= render 'shared/forms/errors_for', model: @topic, field: :content %>
-        </div>
-        <%= t.submit class: "btn btn-primary" %>
-      <% end %>
+      <%= render "topics/new_form" %>
     </div>
   </div>
 </div>

@@ -8,7 +8,7 @@
         { name: @forum.name, url: @forum },
         { name: @topic.name, url: [@forum, @topic] },
       ] %>
-    </div>
+  </div>
   </div>
   <div class="row">
     <div class="col-md-2"></div>
@@ -16,24 +16,24 @@
       <h1>
         <%= @topic.name %>
       </h1>
-      <p><small><%= link_to @topic.user.name, @topic.user %></small></p>
       <div class="well">
-          <div>
-            <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-          </div>
+        <div>
+          <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+        </div>
       </div>
       <div class="posts">
+        <%= render "topics/first_post" %>
         <%= render @posts.order :id %>
       </div>
       <div class="well">
-          <% if policy(@topic.posts.new).create? %>
-            <%= link_to "New Reply", new_forum_topic_post_path(@forum, @topic), class: "btn btn-info" %>
-          <% end %>
+        <% if policy(@topic.posts.new).create? %>
+          <%= link_to "New Reply", new_forum_topic_post_path(@forum, @topic), class: "btn btn-info" %>
+        <% end %>
 
-          <div>
-            <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-            <%= page_entries_info @posts %>
-          </div>
+        <div>
+          <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+          <%= page_entries_info @posts %>
+        </div>
       </div>
 
       <div class="well">

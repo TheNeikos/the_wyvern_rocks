@@ -12,4 +12,8 @@ class TopicPolicy < ApplicationPolicy
   def create?
     user
   end
+
+  def update?
+    user && (user.is_admin || record.user == user)
+  end
 end
