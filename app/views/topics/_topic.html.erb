@@ -1,5 +1,11 @@
-<div class="row">
-  <div class="col-md-10">
-    <div class="well"><%= link_to topic.name, [@forum, topic] %></div>
+<div class="well">
+  <div class="row">
+    <div class="col-xs-9">
+      <%= link_to topic.name, [@forum, topic] %>
+    </div>
+    <div class="col-xs-3">
+      By <%= link_to topic.user.name, topic.user %>,
+      <%= distance_of_time_in_words_to_now topic.created_at %> ago
+    </div>
   </div>
 </div>

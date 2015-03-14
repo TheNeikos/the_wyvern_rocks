@@ -3,6 +3,10 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
       <%= render 'shared/breadcrumbs', links: [
+        { name: "Forum", url: root_path },
+        { name: @forum.dashboard_category.name, url: @forum.dashboard_category },
+        { name: @forum.name, url: @forum },
+        { name: "New topic", url: nil },
       ] %>
     </div>
   </div>
