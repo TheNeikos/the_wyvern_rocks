@@ -57,8 +57,6 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
   end
 
-  private
-
   def post_params
     params.require(:post).permit(:content)
   end
