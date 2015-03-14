@@ -3,12 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_secure_password
+  #has_secure_password
   validates :name, presence: true
-  validates :email_address, presence: true, uniqueness: true,
+  validates :email, presence: true, uniqueness: true,
     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
-  validates :email_address, confirmation: true
-  validates :email_address_confirmation, presence: true, on: :create
+  #validates :email, confirmation: true
 
   validates :password, if: :old_password_matches, on: :update, presence: true
 

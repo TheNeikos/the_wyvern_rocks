@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-# before_filter :configure_sign_up_params, only: [:create]
-# before_filter :configure_account_update_params, only: [:update]
+  after_action :verify_authorized, :except => [:new]
+  prepend_before_filter :require_no_authentication, only: [:new, :create, :cancel]
+  prepend_before_filter :authenticate_scope!, only: [:edit, :update, :destroy]
 
   # GET /resource/sign_up
   # def new
@@ -8,14 +9,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+     super
+     authorize resource
+   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    render :edit
+  end
 
   # PUT /resource
   # def update
@@ -36,7 +38,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+   protected
+
+  def build_resource(hash=nil)
+    self.resource = resource_class.new_with_session(hash || {}, session)
+  end
+
+  # Authenticates the current scope and gets the current resource from the session.
+  def authenticate_scope!
+    send(:"authenticate_#{resource_name}!", force: true)
+    self.resource = send(:"current_#{resource_name}")
+  end
 
   # You can put the params you want to permit in the empty array.
   # def configure_sign_up_params

@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20150314161007) do
 
   # These are extensions that must be enabled in order to support this database
@@ -81,7 +80,7 @@ ActiveRecord::Schema.define(version: 20150314161007) do
     t.string   "content"
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
-    t.datetime "last_post_created_at", default: '2015-03-14 19:07:55'
+    t.datetime "last_post_created_at", default: '2015-03-14 20:58:26'
   end
 
   create_table "users", force: :cascade do |t|
