@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   namespace :admin do
     resources :global_settings, :only => [:index, :update]
     get '' => 'dashboard#index'
