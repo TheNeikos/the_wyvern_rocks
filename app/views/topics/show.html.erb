@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <%= render 'shared/breadcrumbs', links: [
+        { name: "Forum", url: root_path },
+        { name: @topic.forum.dashboard_category.name, url: @topic.forum.dashboard_category },
+        { name: @topic.forum.name, url: @topic.forum },
+        { name: @topic.name, url: @topic },
+      ] %>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <h1>
+        <%= @topic.name %>
+      </h1>
+      <div class="well">
+        <div>
+          <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+        </div>
+      </div>
+      <div class="posts">
+        <%= render "topics/first_post" %>
+        <%= render @posts.order :id %>
+      </div>
+      <div class="well">
+        <% if policy(@topic.posts.new).create? %>
+          <%= link_to "New Reply", new_topic_post_path(@topic), class: "btn btn-info" %>
+        <% end %>
+
+        <div>
+          <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+          <%= page_entries_info @posts %>
+        </div>
+      </div>
+
+      <div class="well">
+        <%= render partial: 'posts/new_form', locals: {remote: true} %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+module DashboardCategoryHelper
+end

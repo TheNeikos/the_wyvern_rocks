@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :forums, only: [:show, :create, :update, :delete], shallow: true do
+    resources :topics do
+      resources :posts, only: [:new, :create, :edit, :update, :delete]
+    end
+  end
+
+  resources :dashboard_categories, only: [:show, :create, :update, :delete]
+
   namespace :admin do
     resources :global_settings, :only => [:index, :update]
     get '' => 'dashboard#index'

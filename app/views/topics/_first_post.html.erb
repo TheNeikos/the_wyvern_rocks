@@ -1,0 +1,12 @@
+<div class="well" id="topic_<%= @topic.id %>">
+  <%= link_to @topic.user.name, @topic.user %>, <%= distance_of_time_in_words_to_now @topic.created_at %> ago
+  <span class="pull-right">
+    <% if policy(@topic).edit? %>
+      <%= link_to "Edit", edit_topic_path(@topic), remote: true %>
+    <% end %>
+  </span>
+  <hr>
+  <div class="content">
+    <%= raw @topic.content.bbcode_to_html_with_formatting %>
+  </div>
+</div>
