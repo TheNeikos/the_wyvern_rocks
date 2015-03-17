@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314214815) do
+ActiveRecord::Schema.define(version: 20150317031100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(version: 20150314214815) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
+
+  create_table "identities", force: :cascade do |t|
+    t.integer  "member_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "identities", ["member_id"], name: "index_identities_on_member_id", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -127,4 +137,5 @@ ActiveRecord::Schema.define(version: 20150314214815) do
   add_foreign_key "blog_posts", "blogs"
   add_foreign_key "blog_posts", "users"
   add_foreign_key "blogs", "users"
+  add_foreign_key "identities", "members"
 end

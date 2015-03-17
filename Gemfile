@@ -34,6 +34,10 @@ gem 'bb-ruby', '~> 1.1.0'
 
 # Devise for user authentication
 gem 'devise'
+# Omniauth for other login types
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 # Use seed-fu for idempotent seeding
 gem 'seed-fu', '~> 2.3'
