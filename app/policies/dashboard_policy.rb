@@ -1,5 +1,5 @@
-class DashboardPolicy < Struct.new(:user, :dashboard)
+class DashboardPolicy < Struct.new(:member, :dashboard)
   def index?
-    user and user.is_admin
+    member and member.is_admin
   end
 end

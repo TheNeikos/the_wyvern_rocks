@@ -1,23 +1,23 @@
 class BlogPostPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user and user.is_admin
+      if member and member.is_admin
         scope.all
       else
-        scope.where('published = true OR user_id = ?', (user && user.id || 0))
+        scope.where('published = true OR member_id = ?', (member && member.id || 0))
       end
     end
   end
 
   def create?
-    user && (user.is_admin || record.blog.user == user)
+    member && (member.is_admin || record.blog.member == member)
   end
 
   def show?
-    user && (user.is_admin || record.user == user) || true
+    member && (member.is_admin || record.member == member) || true
   end
 
   def update?
-    user && (user.is_admin || record.user == user)
+    member && (member.is_admin || record.member == member)
   end
 end
