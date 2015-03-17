@@ -1,7 +1,7 @@
 class BlogPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if member and member.is_admin
+      if user and user.is_admin
         scope.all
       else
         scope.all
@@ -10,10 +10,10 @@ class BlogPolicy < ApplicationPolicy
   end
 
   def update?
-    member and (member.is_admin || record.member == member)
+    user and (user.is_admin || record.user == user)
   end
 
   def create?
-    member
+    user
   end
 end

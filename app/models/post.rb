@@ -1,9 +1,9 @@
 class Post < ActiveRecord::Base
   belongs_to :topic
-  belongs_to :member
+  belongs_to :user
 
   validates :topic, presence: true
-  validates :member, presence: true
+  validates :user, presence: true
   validates :content, presence: true
 
   after_save do

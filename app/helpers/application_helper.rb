@@ -6,7 +6,7 @@ module ApplicationHelper
       type = 'success' if type == 'notice'
       type = 'error'   if type == 'alert'
       puts type
-
+      message = sanitize(message)
       text = "<script>toastr.#{type}('#{message}');</script>"
       flash_messages << text.html_safe if message
     end

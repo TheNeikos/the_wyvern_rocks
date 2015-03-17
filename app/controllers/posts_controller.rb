@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   def create
     topic = Topic.find(params[:topic_id])
     @post = topic.posts.build post_params
-    @post.member = current_member
+    @post.user = current_user
 
     authorize @post
 

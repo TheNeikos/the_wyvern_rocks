@@ -8,7 +8,7 @@ class BlogPostsController < ApplicationController
 
   def create
     @blog = Blog.find(params[:blog_id])
-    @post = @blog.posts.build(post_params.merge member: current_member)
+    @post = @blog.posts.build(post_params.merge user: current_user)
 
     authorize @post
 

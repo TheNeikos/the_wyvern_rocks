@@ -16,7 +16,7 @@ class TopicsController < ApplicationController
 
     authorize @topic
 
-    @topic.member = current_member
+    @topic.user = current_user
 
     if @topic.save
       redirect_to [@topic.forum, @topic]

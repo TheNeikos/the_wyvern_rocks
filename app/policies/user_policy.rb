@@ -1,7 +1,7 @@
-class MemberPolicy < ApplicationPolicy
+class UserPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if member and member.is_admin
+      if user and user.is_admin
         scope.all
       else
         scope.all
@@ -14,7 +14,7 @@ class MemberPolicy < ApplicationPolicy
   end
 
   def logout?
-    member
+    user
   end
 
   def create?

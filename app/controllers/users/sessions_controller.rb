@@ -1,4 +1,4 @@
-class Members::SessionsController < Devise::SessionsController
+class Users::SessionsController < Devise::SessionsController
   after_action :verify_authorized, :except => [:new, :create, :destroy]
   prepend_before_filter :require_no_authentication, only: [:new, :create]
   prepend_before_filter :allow_params_authentication!, only: :create

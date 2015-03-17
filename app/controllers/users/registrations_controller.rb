@@ -1,4 +1,4 @@
-class Members::RegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
   after_action :verify_authorized, :except => [:new, :create, :edit]
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
@@ -15,7 +15,7 @@ class Members::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
    def edit
-     @member = current_member
+     @user = current_user
    end
 
   # PUT /resource

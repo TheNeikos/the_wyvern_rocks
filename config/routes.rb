@@ -23,11 +23,11 @@ Rails.application.routes.draw do
   ##### END ADMIN PATHS
 
   ##### USER PATHS
-  devise_for :members, controllers: { sessions: "members/sessions", registrations: "members/registrations", omniauth_callbacks: 'omniauth_callbacks' }
-  devise_scope :members do
-    match 'member/:id', to: "member_pages#show", via: 'get', as: 'member_page'
-    match 'all_members', to: "member_pages#index", via: 'get', as: 'all_members'
-    match 'member/:id/finish_signup' => 'members_pages#finish_signup', via: [:get, :patch], :as => :finish_signup
+  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", omniauth_callbacks: 'omniauth_callbacks' }
+  devise_scope :users do
+    match 'user/:id', to: "user_pages#show", via: 'get', as: 'user_page'
+    match 'all_users', to: "user_pages#index", via: 'get', as: 'all_users'
+    match 'user/:id/finish_signup' => 'users_pages#finish_signup', via: [:get, :patch], :as => :finish_signup
   end
   ##### END USER PATHS
 end

@@ -1,4 +1,4 @@
-class Member < ActiveRecord::Base
+class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -6,7 +6,6 @@ class Member < ActiveRecord::Base
 
   has_many :blogs
   has_many :blog_posts
-
 
   # Convert username to friendly url format
   def slug
@@ -38,37 +37,37 @@ class Member < ActiveRecord::Base
     # to prevent the identity being locked with accidentally created accounts.
     # Note that this may leave zombie accounts (with no associated identity) which
     # can be cleaned up at a later date.
-    member = signed_in_resource ? signed_in_resource : identity.member
+    user = signed_in_resource ? signed_in_resource : identity.user
 
     # Create the user if needed
-    if member.nil?
+    if user.nil?
 
       # Get the existing user by email if the provider gives us a verified email.
       # If no verified email was provided we assign a temporary email and ask the
       # user to verify it on the next step via UsersController.finish_signup
       email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
       email = auth.info.email if email_is_verified
-      member = Member.where(:email => email).first if email
+      user = User.where(:email => email).first if email
 
       # Create the user if it's a new registration
-      if member.nil?
-        member = Member.new(
+      if user.nil?
+        user = User.new(
           name: auth.extra.raw_info.name,
           #username: auth.info.nickname || auth.uid,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
         )
-        member.skip_confirmation!
-        member.save!
+        user.skip_confirmation!
+        user.save!
       end
     end
 
-    # Associate the identity with the member if needed
-    if identity.member != member
-      identity.member = member
+    # Associate the identity with the user if needed
+    if identity.user != user
+      identity.user = user
       identity.save!
     end
-    member
+    user
   end
 
   def email_verified?

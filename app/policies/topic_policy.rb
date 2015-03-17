@@ -1,7 +1,7 @@
 class TopicPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if member and member.is_admin
+      if user and user.is_admin
         scope.all
       else
         scope.all
@@ -10,10 +10,10 @@ class TopicPolicy < ApplicationPolicy
   end
 
   def create?
-    member
+    user
   end
 
   def update?
-    member && (member.is_admin || record.member == member)
+    user && (user.is_admin || record.user == user)
   end
 end
