@@ -9,7 +9,7 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = current_user.blogs.build(blog_params)
+    @blog = current_member.blogs.build(blog_params)
     authorize @blog
 
     if @blog.save
