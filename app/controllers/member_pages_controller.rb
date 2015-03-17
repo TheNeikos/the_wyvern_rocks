@@ -9,14 +9,14 @@ class MemberPagesController < ApplicationController
     @member = Member.find(params[:id])
   end
 
-  # GET/PATCH /users/:id/finish_signup
+  # GET/PATCH /member_page/:id/finish_signup
   def finish_signup
-    # authorize! :update, @user 
-    if request.patch? && params[:user] #&& params[:user][:email]
-      if @user.update(user_params)
-        @user.skip_reconfirmation!
-        sign_in(@user, :bypass => true)
-        redirect_to @user, notice: 'Your profile was successfully updated.'
+    # authorize! :update, @member
+    if request.patch? && params[:member] #&& params[:member][:email]
+      if @member.update(member_params)
+        @member.skip_reconfirmation!
+        sign_in(@member, :bypass => true)
+        redirect_to @member, notice: 'Your profile was successfully updated.'
       else
         @show_errors = true
       end
