@@ -36,6 +36,7 @@ class ApplicationController < ActionController::Base
     private
 
   def permission_denied
-    head 403
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to request.headers["Referer"] || root_path
   end
 end
