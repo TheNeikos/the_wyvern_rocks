@@ -33,10 +33,10 @@ class ApplicationController < ActionController::Base
   # Returning 403 Forbidden if permission is denied
   rescue_from Pundit::NotAuthorizedError, with: :permission_denied
 
-    private
+  private
 
   def permission_denied
     flash[:alert] = "You are not authorized to perform this action."
-    redirect_to request.headers["Referer"] || root_path
+    return redirect_to root_path
   end
 end

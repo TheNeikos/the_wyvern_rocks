@@ -1,9 +1,10 @@
 class MemberPagesController < ApplicationController
   before_action :authenticate_member!, :except => [:show]
-  after_action :verify_authorized, :except => [:show, :finish_signup]
+  after_filter :verify_authorized,  except: [:show, :finish_signup, :index]
+  after_filter :verify_policy_scoped, only: [:index, :show]
 
   def index
-    @members = Member.all
+    @members = policy_scope(Member)
   end
 
   def show
