@@ -4,6 +4,9 @@ class Member < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  has_many :blogs
+  has_many :blog_posts
+
 
   # Convert username to friendly url format
   def slug
