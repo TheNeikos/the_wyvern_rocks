@@ -2,10 +2,10 @@
 
 one:
   content: MyString
-  user_id: 1
+  member_id: 1
   type: 
 
 two:
   content: MyString
-  user_id: 1
+  member_id: 1
   type: 

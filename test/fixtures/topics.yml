@@ -3,13 +3,13 @@
 one:
   name: MyString
   type: 
-  user_id: 1
+  member_id: 1
   forum_id: 1
   first_post_id: MyString
 
 two:
   name: MyString
   type: 
-  user_id: 1
+  member_id: 1
   forum_id: 1
   first_post_id: MyString
