@@ -1,6 +1,7 @@
 class MemberPagesController < ApplicationController
   before_action :authenticate_member!, :except => [:show]
-  after_action :verify_authorized, :except => [:show, :index, :finish_signup]
+  after_action :verify_authorized, :except => [:show, :finish_signup]
+
   def index
     @members = Member.all
   end

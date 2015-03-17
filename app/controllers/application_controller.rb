@@ -28,4 +28,14 @@ class ApplicationController < ActionController::Base
 
   after_action :verify_authorized, :except => :index
   after_action :verify_policy_scoped, :only => :index
+
+    # Globally rescue Authorization Errors in controller.
+  # Returning 403 Forbidden if permission is denied
+  rescue_from Pundit::NotAuthorizedError, with: :permission_denied
+
+    private
+
+  def permission_denied
+    head 403
+  end
 end
