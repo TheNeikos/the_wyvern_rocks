@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  ##### DASHBOARD PATHS
   root 'index#dashboard'
+  resources :dashboard_categories, only: [:show, :create, :update, :delete]
+  ##### END DASHBOARD PATHS
 
   ##### FORUM/BLOG PATHS
   resources :forums, only: [:show, :create, :update, :delete], shallow: true do
@@ -12,11 +15,12 @@ Rails.application.routes.draw do
   end
   ##### END FORUM/BLOG PATHS
 
-  resources :dashboard_categories, only: [:show, :create, :update, :delete]
+  ##### ADMIN PATHS
   namespace :admin do
     resources :global_settings, :only => [:index, :update]
     get '' => 'dashboard#index'
   end
+  ##### END ADMIN PATHS
 
   ##### USER PATHS
   devise_for :members, controllers: { sessions: "members/sessions", registrations: "members/registrations", omniauth_callbacks: 'omniauth_callbacks' }
