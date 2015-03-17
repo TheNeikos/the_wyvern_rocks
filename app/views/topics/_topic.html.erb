@@ -4,14 +4,14 @@
       <%= link_to topic.name, topic %>
     </div>
     <div class="col-xs-3">
-      By <%= link_to topic.user.name, topic.user %>,
+      By <%= link_to topic.member.name, topic.member %>,
       <%= distance_of_time_in_words_to_now topic.created_at %> ago
       <hr>
       <% unless topic.posts.empty? %>
-        Last Post by: <%= link_to topic.posts.last.user.name, topic.posts.last.user %>,
+        Last Post by: <%= link_to topic.posts.last.member.name, topic.posts.last.member %>,
         <%= distance_of_time_in_words_to_now topic.posts.last.created_at %> ago
       <% else %>
-        Last Post by: <%= link_to topic.user.name, topic.user %>,
+        Last Post by: <%= link_to topic.member.name, topic.member %>,
         <%= distance_of_time_in_words_to_now topic.created_at %> ago
       <% end %>
     </div>

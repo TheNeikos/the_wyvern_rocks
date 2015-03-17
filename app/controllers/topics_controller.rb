@@ -16,7 +16,7 @@ class TopicsController < ApplicationController
 
     authorize @topic
 
-    @topic.user = current_user
+    @topic.member = current_member
 
     if @topic.save
       redirect_to [@topic.forum, @topic]
@@ -54,7 +54,7 @@ class TopicsController < ApplicationController
     authorize @topic
 
     @post = @topic.posts.build
-    @posts = policy_scope(@topic.posts).includes(:user).paginate(:page => params[:page])
+    @posts = policy_scope(@topic.posts).includes(:member).paginate(:page => params[:page])
   end
 
   def destroy

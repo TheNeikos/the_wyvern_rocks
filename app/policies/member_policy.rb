@@ -1,7 +1,7 @@
-class UserPolicy < ApplicationPolicy
+class MemberPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user and user.is_admin
+      if member and member.is_admin
         scope.all
       else
         scope.all
@@ -14,16 +14,16 @@ class UserPolicy < ApplicationPolicy
   end
 
   def logout?
-    user
+    member
   end
 
   def create?
     return false if GlobalSetting[:registrations_enabled].value == '0'
-    return false if user and not user.is_admin
+    return false if member and not member.is_admin
     true
   end
 
   def update?
-    user and (user == record or user.is_admin)
+    member and (member == record or member.is_admin)
   end
 end

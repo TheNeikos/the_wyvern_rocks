@@ -15,7 +15,7 @@
           <% policy_scope(BlogPost).where(published: true).each do |bp| %>
             <li>
               <%= link_to bp.name, [bp.blog, bp] %>
-              <em> by <%= bp.user.name %></em>
+              <em> by <%= bp.member.name %></em>
             </li>
           <% end %>
         </ol>

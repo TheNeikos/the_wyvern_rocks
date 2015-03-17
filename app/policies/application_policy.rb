@@ -1,13 +1,13 @@
 class ApplicationPolicy
-  attr_reader :user, :record
+  attr_reader :member, :record
 
-  def initialize(user, record)
-    @user = user
+  def initialize(member, record)
+    @member = member
     @record = record
   end
 
   def index?
-    user and user.is_admin
+    member and member.is_admin
   end
 
   def show?
@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    user and user.is_admin
+    member and member.is_admin
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user and user.is_admin
+    member and member.is_admin
   end
 
   def edit?
@@ -31,18 +31,18 @@ class ApplicationPolicy
   end
 
   def destroy?
-    user and user.is_admin
+    member and member.is_admin
   end
 
   def scope
-    Pundit.policy_scope!(user, record.class)
+    Pundit.policy_scope!(member, record.class)
   end
 
   class Scope
-    attr_reader :user, :scope
+    attr_reader :member, :scope
 
-    def initialize(user, scope)
-      @user = user
+    def initialize(member, scope)
+      @member = member
       @scope = scope
     end
 

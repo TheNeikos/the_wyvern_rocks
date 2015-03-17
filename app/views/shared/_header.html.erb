@@ -13,7 +13,7 @@
     <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
       <ul class="nav navbar-nav">
         <li>
-          <%= link_to "Users", users_path %>
+          <%= link_to "Members", all_members_path %>
         </li>
         <li>
           <%= link_to "Blogs", blogs_path, class: "dropdown-toggle", 'data-toggle' => "dropdown" %>
@@ -31,21 +31,19 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <% if current_user.nil? %>
+        <% unless signed_in? %>
           <%= render "shared/header_login" %>
         <% else %>
           <li>
-            <a class="dropdown-toggle" href="<%= user_path(current_user)%>" data-toggle="dropdown" role="button">
-              <%= current_user.name %>
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button">
+              <%= if current_member.name.present? then current_member.name.titleize end %>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Logout", logout_users_path, method: :post %></li>
-              <% if current_user.is_admin %>
-                <li>
-                  <%= link_to "Admin Dashboard", admin_path %>
-                </li>
-              <% end %>
+              <li><%= link_to "View profile", member_page_path(current_member) %></li>
+              <li><%= link_to "Edit profile", edit_member_registration_path %></li>
+                <li class="divider"></li>
+              <li><%= link_to 'Sign Out', destroy_member_session_path, method: :delete %></li>
             </ul>
           </li>
     </div>

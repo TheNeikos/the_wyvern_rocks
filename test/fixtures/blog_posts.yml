@@ -2,14 +2,14 @@
 
 one:
   blog_id: 
-  user_id: 
+  member_id: 
   name: MyString
   content: MyString
   published: false
 
 two:
   blog_id: 
-  user_id: 
+  member_id: 
   name: MyString
   content: MyString
   published: false

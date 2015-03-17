@@ -12,6 +12,9 @@
 <body>
   <%= render "shared/header" %>
   <%= render partial: 'layouts/nprogress' %>
+  <% if notice or alert %>
+    <%= custom_bootstrap_flash %>
+  <% end %>
 
   <%= yield %>
 
