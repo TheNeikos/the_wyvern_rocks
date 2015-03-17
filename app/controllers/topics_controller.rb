@@ -54,7 +54,7 @@ class TopicsController < ApplicationController
     authorize @topic
 
     @post = @topic.posts.build
-    @posts = policy_scope(@topic.posts).includes(:user).paginate(:page => params[:page])
+    @posts = policy_scope(@topic.posts).includes(:member).paginate(:page => params[:page])
   end
 
   def destroy

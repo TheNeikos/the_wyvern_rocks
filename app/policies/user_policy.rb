@@ -19,11 +19,11 @@ class UserPolicy < ApplicationPolicy
 
   def create?
     return false if GlobalSetting[:registrations_enabled].value == '0'
-    return false if user and not user.is_admin
+    return false if member and not member.is_admin
     true
   end
 
   def update?
-    user and (user == record or user.is_admin)
+    member and (member == record or member.is_admin)
   end
 end
