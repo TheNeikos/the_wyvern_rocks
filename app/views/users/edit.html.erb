@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <%= column_do do %>
       <%= form_for @user, url: {action: 'update'} do |f| %>
         <div class="form-group">
           <%= f.label :email_address, class: "control-label" %>
@@ -61,6 +60,6 @@
         </div>
         <%= f.submit "Update", class: "btn btn-primary"%>
       <%- end %>
-    </div>
+    <% end %>
   </div>
 </div>

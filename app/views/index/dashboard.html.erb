@@ -1,14 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10"></div>
+    <%= column_do do %>
+    <% end %>
   </div>
   <div class="row">
-    <div class="col-md-8">
+    <%= column_do columns: 8 do %>
       <%= render @categories %>
-    </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-3" id="sidebar">
+    <% end%>
+    <%= column_do columns: 3, offset: 1 do %>
       <div class="well latest">
         <strong>Latest Blog Posts</strong>
         <ol>
@@ -20,6 +19,6 @@
           <% end %>
         </ol>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
