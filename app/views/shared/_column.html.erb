@@ -1,0 +1,3 @@
+<div class="col-md-<%= options[:columns] %> <%= options.has_key?(:offset) ? "col-md-offset-#{options[:offset]}" : "" %>">
+  <%= capture(&block) %>
+</div>
