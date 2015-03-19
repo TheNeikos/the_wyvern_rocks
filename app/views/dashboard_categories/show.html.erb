@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <%= column_do do %>
       <%= render 'shared/breadcrumbs', links: [
         { name: "Forum", url: root_path },
         { name: @category.name, url: @category },
       ] %>
+    <% end %>
   </div>
   <div class="row">
-    <div class="col-md-8">
+    <%= column_do do %>
       <div class="well"><%= @category.name %></div>
       <%= render @category.forums %>
-    </div>
+    <% end %>
   </div>
 </div>

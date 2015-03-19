@@ -1,18 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <%= column_do do %>
       <%= render 'shared/breadcrumbs', links: [
         { name: "Blog Index", url: blogs_path },
       ] %>
-    </div>
+    <% end %>
   </div>
   <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
+    <%= column_do do %>
       <% @blogs.each do |b| %>
         <%= link_to b.name, b %>
       <% end %>
-    </div>
+    <% end %>
   </div>
 </div>

@@ -1,18 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <%= column_do do %>
       <%= render 'shared/breadcrumbs', links: [
         { name: "Blog Index", url: blogs_path },
         { name: @blog.name, url: @blog },
         { name: @post.name, url: @blog },
         { name: "Creating new post", url: nil },
       ] %>
-    </div>
+    <% end %>
   </div>
   <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
+    <%= column_do do %>
       <h1>Updating a post</h1>
       <%= form_for [@blog, @post] do |t|  %>
         <div class="form-group">
@@ -34,6 +32,6 @@
         </div>
         <%= t.submit class: "btn btn-primary" %>
       <% end %>
-    </div>
+    <% end %>
   </div>
 </div>

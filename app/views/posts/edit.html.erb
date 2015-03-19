@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <%= column_do do %>
       <%= render 'shared/breadcrumbs', links: [
         { name: "Forum", url: root_path },
         { name: @post.topic.forum.dashboard_category.name, url: @post.topic.forum.dashboard_category },
@@ -9,12 +8,12 @@
         { name: @post.topic.name, url: @post.topic },
         { name: "Editing Post", url: nil },
       ] %>
+    <% end %>
   </div>
   <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
+    <%= column_do do %>
       <h1>Updating a new post</h1>
       <%= render 'posts/new_form' %>
-    </div>
+    <% end %>
   </div>
 </div>
