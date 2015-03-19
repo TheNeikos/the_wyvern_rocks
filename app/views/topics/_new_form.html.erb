@@ -1,4 +1,4 @@
-<%= form_for @topic, remote: (defined? remote ? true : false) do |t|  %>
+<%= form_for [@topic.forum, @topic], remote: (defined? remote ? true : false) do |t|  %>
   <div class="form-group">
     <%= t.label :name %>
     <%= t.text_field :name, class: "form-control" %>
