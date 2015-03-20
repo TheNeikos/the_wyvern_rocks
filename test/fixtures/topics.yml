@@ -2,14 +2,12 @@
 
 one:
   name: MyString
-  type: 
+  type:
   user_id: 1
   forum_id: 1
-  first_post_id: MyString
 
 two:
   name: MyString
-  type: 
+  type:
   user_id: 1
   forum_id: 1
-  first_post_id: MyString
