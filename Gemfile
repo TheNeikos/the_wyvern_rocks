@@ -64,3 +64,7 @@ end
 group :production do
   gem 'unicorn' # Use Unicorn as the app server
 end
+
+group :test do
+  gem 'sqlite3'
+end
