@@ -16,7 +16,7 @@ class PostsController < ApplicationController
 
     if @post.save
       respond_to do |format|
-        format.html { redirect_to [topic.forum, topic] }
+        format.html { redirect_to topic }
         format.js
       end
     else

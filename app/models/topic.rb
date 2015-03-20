@@ -11,4 +11,8 @@ class Topic < ActiveRecord::Base
   def last_post_time
     posts.last.created_at
   end
+
+  def path_variables
+    self.persisted? ? self : [self.forum, self]
+  end
 end

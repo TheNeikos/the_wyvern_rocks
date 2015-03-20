@@ -19,7 +19,7 @@ class TopicsController < ApplicationController
     @topic.user = current_user
 
     if @topic.save
-      redirect_to [@topic.forum, @topic]
+      redirect_to @topic
     else
       render :new
     end
