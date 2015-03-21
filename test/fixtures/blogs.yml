@@ -1,2 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+mariesblog:
+  user_id: marie
+  name: "Marie's Blog"
+  description: "The blog from Marie!"
