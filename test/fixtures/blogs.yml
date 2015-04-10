@@ -1,11 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id: 
-  name: MyString
-  description: MyString
-
-two:
-  user_id: 
-  name: MyString
-  description: MyString
+mariesblog:
+  user_id: marie
+  name: "Marie's Blog"
+  description: "The blog from Marie!"
