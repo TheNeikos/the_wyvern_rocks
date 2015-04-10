@@ -48,6 +48,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Pundit for Authorization
 gem 'pundit', '~> 0.3.0'
 
+# Use CKEditor as our Editor of choice
+gem 'ckeditor', '~> 4.1.1'
+
 # Use Capistrano for deployment
 group :development do
   gem 'thin'
