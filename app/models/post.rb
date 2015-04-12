@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  acts_as_paranoid
+
   belongs_to :topic
   belongs_to :user
 

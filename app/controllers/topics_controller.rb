@@ -1,5 +1,7 @@
 class TopicsController < ApplicationController
 
+  before_filter :get_topic, only: [:edit, :update, :show, :destroy]
+
   def index
   end
 
@@ -26,14 +28,10 @@ class TopicsController < ApplicationController
   end
 
   def edit
-    @topic = Topic.includes(:posts).find(params[:id])
-
     authorize @topic
   end
 
   def update
-    @topic = Topic.includes(:posts).find(params[:id])
-
     authorize @topic
 
     if params[:commit] == "Cancel"
@@ -57,8 +55,6 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.includes(:posts).find(params[:id])
-
     authorize @topic
 
     @post = @topic.posts.build
@@ -66,9 +62,25 @@ class TopicsController < ApplicationController
   end
 
   def destroy
+    authorize @topic
+
+    if @topic.deleted_at
+      @topic.restore
+    else
+      @topic.destroy
+    end
+
+    respond_to do |format|
+      format.html { redirect_to [@topic.forum, @post] }
+      format.js
+    end
   end
 
   private
+
+  def get_topic
+    @topic = Topic.with_deleted.includes(:posts).find(params[:id])
+  end
 
   def topic_params
     params.require(:topic).permit(:content, :name)

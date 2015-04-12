@@ -56,6 +56,20 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.with_deleted.find(params[:id])
+
+    authorize @post
+
+    if @post.deleted_at
+      @post.restore
+    else
+      @post.destroy
+    end
+
+    respond_to do |format|
+      format.html { redirect_to [@post.topic.forum, @post.topic] }
+      format.js
+    end
   end
 
   private

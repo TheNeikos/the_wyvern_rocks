@@ -1,4 +1,6 @@
 class Topic < ActiveRecord::Base
+  acts_as_paranoid
+
   belongs_to :forum
   belongs_to :user
   has_many :posts
