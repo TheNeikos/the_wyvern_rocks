@@ -1,9 +1,7 @@
 <div class="well" id="post_<%= post.id %>">
   <%= link_to post.user.name, post.user %>, <%= distance_of_time_in_words_to_now post.created_at %> ago
   <span class="pull-right">
-    <% if policy(post).edit? %>
-      <%= link_to "Edit", edit_post_path(post), remote: true, class: "btn btn-sm btn-info"%>
-    <% end %>
+    <%= render 'shared/edit_button', model: post %>
   </span>
   <hr>
   <div class="content" data-raw="<%= post.content %>">
