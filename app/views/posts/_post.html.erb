@@ -1,7 +1,13 @@
-<div class="well" id="post_<%= post.id %>">
+<div class="well <%= "text-muted deleted" if post.deleted_at %>" id="post_<%= post.id %>">
   <%= link_to post.user.name, post.user %>, <%= distance_of_time_in_words_to_now post.created_at %> ago
   <span class="pull-right">
     <%= render 'shared/edit_button', model: post %>
+    <%= render 'shared/destroy_button', model: post %>
+    <% if post.deleted_at %>
+      <span class="label label-danger" style="display:inline-block;">
+        Deleted <%= distance_of_time_in_words_to_now post.deleted_at %> ago
+      </span>
+    <% end %>
   </span>
   <hr>
   <div class="content" data-raw="<%= post.content %>">
