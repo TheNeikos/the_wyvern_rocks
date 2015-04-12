@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
   has_many :blogs
   has_many :blog_posts
 
+  def to_param
+    "#{self.id}-#{self.name.parameterize}"
+  end
+
   private
 
   def old_password_matches
