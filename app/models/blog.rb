@@ -5,4 +5,8 @@ class Blog < ActiveRecord::Base
       presence: true
 
   validates :user, presence: true
+
+  def to_param
+    "#{self.id}-#{self.name.parameterize}"
+  end
 end
