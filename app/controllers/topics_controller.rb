@@ -36,6 +36,14 @@ class TopicsController < ApplicationController
 
     authorize @topic
 
+    if params[:commit] == "Cancel"
+      respond_to do |format|
+        format.html { redirect_to [@topic.forum, @topic] }
+        format.js
+      end
+      return
+    end
+
     @topic.update topic_params
 
     if @topic.save

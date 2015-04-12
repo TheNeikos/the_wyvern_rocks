@@ -35,6 +35,14 @@ class PostsController < ApplicationController
 
     authorize @post
 
+    if params[:commit] == "Cancel"
+      respond_to do |format|
+        format.html { redirect_to [@post.forum, @post] }
+        format.js
+      end
+      return
+    end
+
     @post.update post_params
 
     if @post.save

@@ -11,6 +11,6 @@
   </div>
   <%= t.submit class: "btn btn-primary" %>
   <% if @topic.persisted? %>
-    <button class="btn btn-warning cancel" data-content="<%=j @topic.content%>" data-name="<%=j @topic.name%>">Cancel</button>
+    <%= t.submit 'Cancel', class: 'btn btn-warning cancel' %>
   <% end %>
 <% end %>
