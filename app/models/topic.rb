@@ -15,4 +15,8 @@ class Topic < ActiveRecord::Base
   def path_variables
     self.persisted? ? self : [self.forum, self]
   end
+
+  def to_param
+    "#{self.id}-#{self.name.parameterize}"
+  end
 end
