@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   resources :forums, only: [:show, :create, :update, :delete], shallow: true do
     resources :topics do
-      resources :posts, only: [:new, :create, :edit, :update, :delete]
+      resources :posts, only: [:new, :create, :edit, :update, :destroy]
     end
   end
 
-  resources :dashboard_categories, only: [:show, :create, :update, :delete]
+  resources :dashboard_categories, only: [:show, :create, :update, :destroy]
 
   namespace :admin do
     resources :global_settings, :only => [:index, :update]
