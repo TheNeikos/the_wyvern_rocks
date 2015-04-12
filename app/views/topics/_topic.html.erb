@@ -1,4 +1,4 @@
-<div class="well">
+<div class="well <%= "text-muted deleted" if topic.deleted_at %>">
   <div class="row">
     <div class="col-xs-9">
       <%= link_to topic.name, topic %>
