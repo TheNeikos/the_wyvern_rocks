@@ -2,6 +2,9 @@
   <div class="row">
     <div class="col-xs-9">
       <%= link_to topic.name, topic %>
+      <% if topic.closed_at %>
+        <i class="glyphicon glyphicon-lock"></i>
+      <% end %>
     </div>
     <div class="col-xs-3">
       By <%= link_to topic.user.name, topic.user %>,

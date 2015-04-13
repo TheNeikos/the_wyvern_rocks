@@ -9,12 +9,25 @@ class PostPolicy < ApplicationPolicy
     end
   end
 
+  def permitted_attributes
+    if user && user.is_admin
+      [:title, :content, :closed_at]
+    else
+      [:title, :content]
+    end
+  end
+
   def create?
-    user
+    user && ([
+      record.topic.closed_at.nil?,
+    ].all? || user.is_admin)
   end
 
   def update?
-    user && (user.is_admin || record.user == user)
+    user && ([
+      record.user == user,
+      record.topic.closed_at.nil?,
+    ].all? || user.is_admin)
   end
 
   def destroy?

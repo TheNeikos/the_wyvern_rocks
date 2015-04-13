@@ -14,10 +14,17 @@ class TopicPolicy < ApplicationPolicy
   end
 
   def update?
-    user && (user.is_admin || record.user == user)
+    user && ([
+      record.user == user,
+      record.closed_at.nil?,
+    ].all? || user.is_admin)
   end
 
   def destroy?
     user && user.is_admin
+  end
+
+  def lock?
+    false
   end
 end
