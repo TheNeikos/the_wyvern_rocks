@@ -5,4 +5,5 @@ CKEDITOR.editorConfig = function(config) {
     ];
 
     config.extraPlugins = "bbcode,divarea";
+    config.removePlugins = "smiley";
 }
