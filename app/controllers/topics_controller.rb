@@ -1,5 +1,8 @@
 class TopicsController < ApplicationController
 
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
+  rescue_from Pundit::NotAuthorizedError, with: :handle_not_found
+
   before_filter :get_topic, only: [:edit, :update, :show, :destroy]
 
   def index
@@ -76,6 +79,9 @@ class TopicsController < ApplicationController
     end
   end
 
+  def not_found
+  end
+
   private
 
   def get_topic
@@ -84,5 +90,9 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:content, :name)
+  end
+
+  def handle_not_found
+    redirect_to topics_not_found_path
   end
 end

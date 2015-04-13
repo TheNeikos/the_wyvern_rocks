@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <%= column_do do %>
+      <%= render 'shared/breadcrumbs', links: [
+        { name: "Forum", url: root_path },
+        { name: "Topic Not Found", url: nil },
+      ] %>
+    <% end %>
+  </div>
+  <div class="row">
+    <%= column_do do %>
+      <h1>Could not find this Topic</h1>
+      <p class="text-warning">Looks like the Topic you searched for couldn't be found! Reasons why this might be:</p>
+      <ol class="text-info">
+        <li>You have entered the URL manually and made a mistake.</li>
+        <li>You do not have the correct authorization to view this.</li>
+        <li>This topic got deleted/hidden.</li>
+      </ol>
+    <% end %>
+  </div>
+</div>
