@@ -67,10 +67,19 @@ class TopicsController < ApplicationController
   def destroy
     authorize @topic
 
-    if @topic.deleted_at
-      @topic.restore
+    if params[:close]
+      if @topic.closed_at
+        @topic.closed_at = nil
+      else
+        @topic.closed_at = DateTime.now
+      end
+      @topic.save
     else
-      @topic.destroy
+      if @topic.deleted_at
+        @topic.restore
+      else
+        @topic.destroy
+      end
     end
 
     respond_to do |format|
