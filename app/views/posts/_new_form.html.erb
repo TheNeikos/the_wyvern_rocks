@@ -6,6 +6,6 @@
   </div>
   <%= t.submit class: "btn btn-primary" %>
   <% if @post.persisted? %>
-    <button class="btn btn-warning cancel" data-content="<%=j @post.content%>">Cancel</button>
+    <%= t.submit 'Cancel', class: 'btn btn-warning cancel' %>
   <% end %>
 <% end %>
