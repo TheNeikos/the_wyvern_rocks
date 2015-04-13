@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'topics/not_found'
   resources :forums, only: [:show, :create, :update, :delete], shallow: true do
     resources :topics do
       resources :posts, only: [:new, :create, :edit, :update, :destroy]
