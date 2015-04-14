@@ -3,6 +3,8 @@ class ForumsController < ApplicationController
     @forum = Forum.find(params[:id])
 
     authorize @forum
+
+    @topics = policy_scope(@forum.topics).order("last_post_created_at DESC")
   end
 
   def create

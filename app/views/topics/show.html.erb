@@ -16,6 +16,9 @@
         <% if @topic.closed_at %>
           <i class="glyphicon glyphicon-lock"></i>
         <% end %>
+        <% if @topic.pinned_at %>
+          <i class="glyphicon glyphicon-pushpin"></i>
+        <% end %>
       </h1>
       <div class="well">
         <div>

@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
   rescue_from Pundit::NotAuthorizedError, with: :handle_not_found
 
-  before_filter :get_topic, only: [:edit, :update, :show, :destroy]
+  before_filter :get_topic, only: [:edit, :update, :show, :destroy, :pin]
 
   def index
   end
@@ -91,10 +91,26 @@ class TopicsController < ApplicationController
   def not_found
   end
 
+  def pin
+    authorize @topic
+
+    if @topic.pinned_at
+      @topic.pinned_at = nil
+    else
+      @topic.pinned_at = DateTime.now
+    end
+    @topic.save
+
+    respond_to do |format|
+      format.html { redirect_to [@topic.forum, @post] }
+      format.js
+    end
+  end
+
   private
 
   def get_topic
-    @topic = Topic.with_deleted.includes(:posts).find(params[:id])
+    @topic = Topic.with_deleted.includes(:posts).find(params[:topic_id] || params[:id])
   end
 
   def topic_params
