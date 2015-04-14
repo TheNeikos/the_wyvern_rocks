@@ -27,4 +27,8 @@ class TopicPolicy < ApplicationPolicy
   def lock?
     false
   end
+
+  def pin?
+    user && user.is_admin
+  end
 end

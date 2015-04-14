@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'topics/not_found'
   resources :forums, only: [:show, :create, :update, :delete], shallow: true do
     resources :topics do
+      post 'pin'
       resources :posts, only: [:new, :create, :edit, :update, :destroy]
     end
   end

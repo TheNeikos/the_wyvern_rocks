@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413121316) do
+ActiveRecord::Schema.define(version: 20150414203224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,10 +86,12 @@ ActiveRecord::Schema.define(version: 20150413121316) do
     t.datetime "last_post_created_at", default: '2015-03-14 19:07:55'
     t.datetime "deleted_at"
     t.datetime "closed_at"
+    t.datetime "pinned_at"
   end
 
   add_index "topics", ["closed_at"], name: "index_topics_on_closed_at", using: :btree
   add_index "topics", ["deleted_at"], name: "index_topics_on_deleted_at", using: :btree
+  add_index "topics", ["pinned_at"], name: "index_topics_on_pinned_at", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email_address"
