@@ -5,6 +5,9 @@
       <% if topic.closed_at %>
         <i class="glyphicon glyphicon-lock"></i>
       <% end %>
+      <% if topic.pinned_at %>
+        <i class="glyphicon glyphicon-pushpin"></i>
+      <% end %>
     </div>
     <div class="col-xs-3">
       By <%= link_to topic.user.name, topic.user %>,
