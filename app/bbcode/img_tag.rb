@@ -6,6 +6,6 @@ class ImgTag < BBCode::Tag
     unless source =~ /^https?:\/\//
       source.prepend '//'
     end
-    "<img src='#{source}'>"
+    "<img src='#{source}' class='img-responsive'>"
   end
 end
