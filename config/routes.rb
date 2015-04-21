@@ -28,6 +28,12 @@ Rails.application.routes.draw do
 
   root 'index#dashboard'
 
+  unless ENV['GOOGLE_SITE_VERIFICATION'].nil?
+    get "/#{ENV['GOOGLE_SITE_VERIFICATION']}",
+      to: proc { |env| [200, {},
+                        ["google-site-verification: #{ENV['GOOGLE_SITE_VERIFICATION']}"]]}
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
