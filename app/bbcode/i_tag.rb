@@ -1,7 +1,7 @@
 class ITag < BBCode::Tag
-  block_name :i
+  block_options :content
 
-  on_layout do |args|
-    "<em>#{args[1]}</em>"
+  on_layout do |content|
+    "<em>#{content}</em>"
   end
 end

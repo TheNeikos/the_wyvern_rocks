@@ -1,7 +1,7 @@
 class BTag < BBCode::Tag
-  block_name :b
+  block_options :content
 
-  on_layout do |args|
-    "<strong>#{args[1]}</strong>"
+  on_layout do |content|
+    "<strong>#{content}</strong>"
   end
 end

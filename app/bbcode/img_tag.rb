@@ -1,8 +1,8 @@
 class ImgTag < BBCode::Tag
-  block_name :img, :argument, :no_closing_tag
+  block_options :argument
 
-  on_layout do |args|
-    source = args[1].gsub(/javascript:/, '')
+  on_layout do |arg|
+    source = arg.gsub(/javascript:/, '')
     unless source =~ /^https?:\/\//
       source.prepend '//'
     end
