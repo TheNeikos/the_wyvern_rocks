@@ -1,7 +1,7 @@
 class UTag < BBCode::Tag
-  block_name :u
+  block_options :content
 
-  on_layout do |args|
-    "<span class='underline'>#{args[1]}</span>"
+  on_layout do |content|
+    "<span class='underline'>#{content}</span>"
   end
 end
