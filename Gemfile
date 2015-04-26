@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use BBCode for parsing
-gem 'bbcode-rails'
+gem 'bbcode-rails', path: "~/projects/bbcode-rails"
 
 # Devise for user authentication
 gem 'devise'
