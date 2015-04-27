@@ -40,7 +40,7 @@ GEM
     autoprefixer-rails (5.1.7)
       execjs
       json
-    bbcode-rails (0.9.1)
+    bbcode-rails (0.9.3)
     bcrypt (3.1.10)
     bootstrap-sass (3.3.3)
       autoprefixer-rails (>= 5.0.0.1)
