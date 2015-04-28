@@ -1,6 +1,12 @@
-
-<h1><%= @user.name %></h1>
-
-<% if policy(@user).update? %>
-  <%= link_to "Edit", edit_user_path(@user) %>
-<% end %>
+<div class="container-fluid user-profile">
+  <% if @user.banner.present? %>
+    <div class="row banner">
+      <div class="banner-img" style="background-image: url(<%= @user.banner.url(:top) %>);"></div>
+    </div>
+  <% end %>
+  <div class="row">
+    <%= column_do columns: 10, offset: 1 do %>
+      <%= render partial: 'users/details', locals: {user: @user} %>
+    <% end %>
+  </div>
+</div>

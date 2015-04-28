@@ -54,6 +54,9 @@ gem 'ckeditor', '~> 4.1.1'
 # Use Paranoia so we don't lose data
 gem 'paranoia', '~> 2.0'
 
+# Use paperclip for attachments
+gem 'paperclip', '~> 4.2'
+
 # Use Capistrano for deployment
 group :development do
   gem 'thin'
