@@ -7,4 +7,8 @@ module UserHelper
       session[:current_user_id] = nil
     end
   end
+
+  def user_link_to user
+    render partial: 'user/link_to', locals: {user: user}
+  end
 end

@@ -1,0 +1,10 @@
+<span class="user-mention">
+  <% if user %>
+    <%= link_to user.name, user,
+      :'data-content' => "#{render(partial: 'users/details', locals: {user: user})}",
+      :'data-html' => "true", class: "btn btn-default user-mention", :'data-placement' => "top",
+      :'data-trigger' => "hover" %>
+  <% else %>
+    <button class="btn btn-warning">User with id <%= user_id %> not found.</button>
+  <% end %>
+</span>
