@@ -8,7 +8,12 @@ class User < ActiveRecord::Base
       size: { in: 0..1.megabytes },
       preserve_files: true
 
+  has_attached_file :banner, styles: { top: "2000x200"},
+      size: { in: 0..1.megabytes },
+      preserve_files: true
+
   validates_attachment_content_type :avatar, content_type: ["image/jpeg", "image/png", "image/gif"]
+  validates_attachment_content_type :banner, content_type: ["image/jpeg", "image/png", "image/gif"]
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :email_address, presence: true, uniqueness: { case_sensitive: false },
     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: [:create, :update] }

@@ -8,12 +8,11 @@
     position: relative;
 
     .avatar {
-      padding: 5px;
       border: 1px solid $gray;
       border-radius: 5px;
-      width: 200px;
-      height: 200px;
       display: inline-block;
+      max-width: 200px;
+      max-height: 200px;
     }
 
     .name {
@@ -22,9 +21,46 @@
 
     .btn-group {
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 5px;
+      right: 15px;
     }
+  }
+  .banner .banner-img {
+    display: block;
+    height: 200px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border-top: 1px solid $gray;
+    border-bottom: 1px solid $gray;
+    box-shadow:
+        inset 0px 11px 8px -10px $darkgray,
+        inset 0px -11px 8px -10px $darkgray;
   }
 }
 
+.user-mention {
+  .details {
+    line-height: 50px;
+    position: relative;
+    width: 244px;
+
+    .avatar {
+      border: 1px solid $gray;
+      border-radius: 5px;
+      display: inline-block;
+      max-width: 50px;
+      max-height: 50px;
+    }
+
+    .name {
+      font-size: 2rem;
+    }
+
+    .btn-group {
+      display: none;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+  }
+}
