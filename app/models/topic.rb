@@ -11,7 +11,7 @@ class Topic < ActiveRecord::Base
   validates :user, presence: true
 
   def last_post_time
-    posts.last.created_at
+    posts.empty? ?  self.created_at : posts.last.created_at
   end
 
   def path_variables

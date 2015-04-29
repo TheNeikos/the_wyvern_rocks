@@ -4,7 +4,7 @@ class ForumsController < ApplicationController
 
     authorize @forum
 
-    @topics = policy_scope(@forum.topics).order("last_post_created_at DESC")
+    @topics = policy_scope(@forum.topics)
   end
 
   def create
