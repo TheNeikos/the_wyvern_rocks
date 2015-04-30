@@ -14,4 +14,5 @@
 
 /.capistrano
 config/database.yml
-public/system/
+/public/system/*
+!/public/system/.keep
