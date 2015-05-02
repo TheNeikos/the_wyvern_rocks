@@ -1,4 +1,4 @@
-<div class="row">
+<div>
   <div class="title"><%= link_to dashboard_category.name, dashboard_category %></div>
   <%= column_do columns: 12 do %>
     <%= render dashboard_category.forums.limit 5 %>
