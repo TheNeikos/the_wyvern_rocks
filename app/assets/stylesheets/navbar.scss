@@ -1,0 +1,25 @@
+.navbar-wyvern {
+    $border-color: darken($primary-bordeau, 10);
+
+    background-color: $primary-bordeau;
+    border-color: $border-color;
+
+    .nav > li > a, a {
+        color: $primary-yellow;
+
+        &:hover, &:focus {
+            background-color: white;
+            color: $primary-bordeau;
+        }
+    }
+
+    .nav .open > a {
+        background-color: white;
+        color: $primary-bordeau;
+    }
+
+    .dropdown-menu {
+        border-color: $border-color;
+        border-top: none;
+    }
+}
