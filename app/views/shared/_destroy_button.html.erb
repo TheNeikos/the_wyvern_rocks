@@ -1,9 +1,9 @@
 <% if policy(model).destroy? %>
   <% if model.deleted_at %>
-    <%= link_to "Restore", self.send("#{model.class.to_s.underscore}_path", model),
-        remote: true, method: :delete, class: "btn btn-sm btn-warning"%>
+    <%= link_to "", self.send("#{model.class.to_s.underscore}_path", model),
+        remote: true, method: :delete, class: "btn btn-sm btn-warning glyphicon glyphicon-refresh"%>
   <% else %>
-    <%= link_to "Delete", self.send("#{model.class.to_s.underscore}_path", model),
-        remote: true, method: :delete, class: "btn btn-sm btn-danger"%>
+    <%= link_to "", self.send("#{model.class.to_s.underscore}_path", model),
+        remote: true, method: :delete, class: "btn btn-sm btn-danger glyphicon glyphicon-trash"%>
   <% end %>
 <% end %>

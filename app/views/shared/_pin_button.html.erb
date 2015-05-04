@@ -1,9 +1,9 @@
 <% if policy(model).destroy? %>
   <% if model.pinned_at %>
-    <%= link_to "Unpin", self.send("#{model.class.to_s.underscore}_pin_path", model),
-        remote: true, method: :post, class: "btn btn-sm btn-success"%>
+    <%= link_to "", self.send("#{model.class.to_s.underscore}_pin_path", model),
+        remote: true, method: :post, class: "btn btn-sm btn-success glyphicon glyphicon-remove"%>
   <% else %>
-    <%= link_to "Pin", self.send("#{model.class.to_s.underscore}_pin_path", model),
-        remote: true, method: :post, class: "btn btn-sm btn-success"%>
+    <%= link_to "", self.send("#{model.class.to_s.underscore}_pin_path", model),
+        remote: true, method: :post, class: "btn btn-sm btn-success glyphicon glyphicon-pushpin"%>
   <% end %>
 <% end %>

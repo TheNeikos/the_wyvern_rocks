@@ -1,10 +1,11 @@
-<%= form_for @post.path_variables, remote: @post.persisted? || !!(defined? remote) do |t|  %>
+<%= form_for @post.path_variables, remote: (@post.persisted? || !!(defined? remote)) do |t|  %>
+  <%= token_tag nil %>
   <div class="form-group">
     <%= t.label :content %>
     <%= t.cktext_area :content, class: "form-control", rows: 10 %>
     <%= render 'shared/forms/errors_for', model: @post, field: :content %>
   </div>
-  <%= t.submit class: "btn btn-primary" %>
+  <%= t.submit class: "btn btn-create" %>
   <% if @post.persisted? %>
     <%= t.submit 'Cancel', class: 'btn btn-warning cancel' %>
   <% end %>

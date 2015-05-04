@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-wyvern navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="/">The Wyvern Rocks</a>
@@ -16,7 +16,10 @@
           <%= link_to "Users", users_path %>
         </li>
         <li>
-          <%= link_to "Blogs", blogs_path, class: "dropdown-toggle", 'data-toggle' => "dropdown" %>
+          <%= link_to blogs_path, class: "dropdown-toggle", 'data-toggle' => "dropdown" do %>
+            Blogs
+            <span class="caret"></span>
+          <% end %>
           <ul class="dropdown-menu">
             <li>
               <%= link_to "Index", blogs_path %>

@@ -7,7 +7,7 @@
         { name: @topic.forum.name, url: @topic.forum },
         { name: @topic.name, url: @topic },
       ] %>
-    <% end %>
+  <% end %>
   </div>
   <div class="row">
     <%= column_do do %>
@@ -20,33 +20,39 @@
           <i class="glyphicon glyphicon-pushpin"></i>
         <% end %>
       </h1>
-      <div class="well">
-        <div>
+      <div class="box box-default box-alone">
+        <div class="content">
           <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+          <%= page_entries_info @posts %>
         </div>
       </div>
       <div class="posts">
         <%= render "topics/first_post" %>
         <%= render @posts.order :id %>
       </div>
-      <div class="well">
-        <% if policy(@topic.posts.new).create? %>
-          <%= link_to "New Reply", new_topic_post_path(@topic), class: "btn btn-info" %>
-        <% end %>
+      <div class="box box-default">
+        <div class="content">
+          <% if policy(@topic.posts.new).create? %>
+            <%= link_to "New Reply", new_topic_post_path(@topic), class: "btn btn-create" %>
+          <% end %>
 
-        <div>
-          <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-          <%= page_entries_info @posts %>
+          <div>
+            <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+            <%= page_entries_info @posts %>
+          </div>
         </div>
       </div>
 
       <% if policy(@topic.posts.new).create? %>
-        <div class="well">
-          <%= render partial: 'posts/new_form', locals: {remote: true} %>
+        <div class="box box-default">
+          <div class="content">
+            <%= render partial: 'posts/new_form', locals: {remote: true} %>
+          </div>
         </div>
       <% else %>
         <p class="text-warning">
-          This Topic is locked and cannot be replied to anymore.
+        You cannot reply to this Topic, it may be locked or you are not
+        signed in.
         </p>
       <% end %>
     <% end %>
