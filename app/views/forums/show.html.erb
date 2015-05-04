@@ -6,13 +6,15 @@
         { name: @forum.dashboard_category.name, url: @forum.dashboard_category },
         { name: @forum.name, url: @forum },
       ] %>
-    <% end %>
+  <% end %>
   </div>
   <div class="row">
     <%= column_do do %>
       <h1>
         <%= @forum.name %>
-        <%= link_to "New Topic", new_forum_topic_path(@forum), class: "btn btn-create btn-sm pull-right" %>
+        <% if policy(@forum.topics.new).create? %>
+          <%= link_to "New Topic", new_forum_topic_path(@forum), class: "btn btn-create btn-sm pull-right" %>
+        <% end %>
       </h1>
       <%= render @topics.where('pinned_at IS NOT NULL') %>
       <%= render @topics.where(pinned_at: nil).sort_by(&:last_post_time).reverse! %>
