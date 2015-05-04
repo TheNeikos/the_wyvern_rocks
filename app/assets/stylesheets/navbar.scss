@@ -8,18 +8,24 @@
         color: $primary-yellow;
 
         &:hover, &:focus {
-            background-color: white;
+            background-color: $secondary-yellow;
             color: $primary-bordeau;
         }
     }
 
     .nav .open > a {
-        background-color: white;
+        background-color: $secondary-yellow;
         color: $primary-bordeau;
     }
 
     .dropdown-menu {
+        background-color: $secondary-yellow;
         border-color: $border-color;
         border-top: none;
+
+        > li > a:hover, > li > a:focus {
+          background-color: $primary-bordeau;
+          color: $primary-yellow;
+        }
     }
 }

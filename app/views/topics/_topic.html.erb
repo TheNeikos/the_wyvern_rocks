@@ -1,23 +1,26 @@
-<div class="well <%= "text-muted deleted" if topic.deleted_at %>">
-  <div class="row">
-    <div class="col-xs-9">
-      <%= link_to topic.name, topic %>
+<div class="box box-topic <%= "deleted" if topic.deleted_at %>">
+  <%= link_to topic, class: "title" do %>
+    <%= topic.name %>
+    <span class="pull-right">
       <% if topic.closed_at %>
         <i class="glyphicon glyphicon-lock"></i>
       <% end %>
       <% if topic.pinned_at %>
         <i class="glyphicon glyphicon-pushpin"></i>
       <% end %>
-    </div>
-    <div class="col-xs-3">
+    </span>
+  <% end %>
+  <div class="content">
+    <div class="box box-topic-created-at">
       By <%= link_to topic.user.name, topic.user %>,
       <%= distance_of_time_in_words_to_now topic.created_at %> ago
-      <hr>
+    </div>
+    <div class="box box-topic-last-post">
       <% unless topic.posts.empty? %>
-        Last Post by: <%= link_to topic.posts.last.user.name, topic.posts.last.user %>,
+        Last Post by <%= link_to topic.posts.last.user.name, topic.posts.last.user %>,
         <%= distance_of_time_in_words_to_now topic.posts.last.created_at %> ago
       <% else %>
-        Last Post by: <%= link_to topic.user.name, topic.user %>,
+        Last Post by <%= link_to topic.user.name, topic.user %>,
         <%= distance_of_time_in_words_to_now topic.created_at %> ago
       <% end %>
     </div>

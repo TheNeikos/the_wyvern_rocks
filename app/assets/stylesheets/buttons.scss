@@ -1,0 +1,7 @@
+.btn-create {
+  background-color: $primary-bordeau;
+  color: $primary-yellow;
+  &:hover, &:focus {
+    color: $primary-yellow;
+  }
+}

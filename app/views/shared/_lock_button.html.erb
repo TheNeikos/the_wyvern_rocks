@@ -1,9 +1,9 @@
 <% if policy(model).destroy? %>
   <% if model.closed_at %>
-    <%= link_to "Unlock", self.send("#{model.class.to_s.underscore}_path", model, :close => true),
-        remote: true, method: :delete, class: "btn btn-sm btn-primary"%>
+    <%= link_to "", self.send("#{model.class.to_s.underscore}_path", model, :close => true),
+        remote: true, method: :delete, class: "btn btn-sm btn-primary glyphicon glyphicon-eye-open"%>
   <% else %>
-    <%= link_to "Lock", self.send("#{model.class.to_s.underscore}_path", model, :close => true),
-        remote: true, method: :delete, class: "btn btn-sm btn-primary"%>
+    <%= link_to "", self.send("#{model.class.to_s.underscore}_path", model, :close => true),
+        remote: true, method: :delete, class: "btn btn-sm btn-primary glyphicon glyphicon-lock"%>
   <% end %>
 <% end %>

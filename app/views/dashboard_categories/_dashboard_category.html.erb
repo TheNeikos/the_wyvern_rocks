@@ -1,6 +1,6 @@
-<div>
+<div class="box box-category">
   <div class="title"><%= link_to dashboard_category.name, dashboard_category %></div>
-  <%= column_do columns: 12 do %>
+  <div class="content">
     <%= render dashboard_category.forums.limit 5 %>
-  <% end %>
+  </div>
 </div>

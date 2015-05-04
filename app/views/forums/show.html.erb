@@ -12,7 +12,7 @@
     <%= column_do do %>
       <h1>
         <%= @forum.name %>
-        <%= link_to "New Topic", new_forum_topic_path(@forum), class: "btn btn-info btn-sm pull-right" %>
+        <%= link_to "New Topic", new_forum_topic_path(@forum), class: "btn btn-create btn-sm pull-right" %>
       </h1>
       <%= render @topics.where('pinned_at IS NOT NULL') %>
       <%= render @topics.where(pinned_at: nil).sort_by(&:last_post_time).reverse! %>
