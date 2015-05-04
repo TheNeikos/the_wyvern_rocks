@@ -1,4 +1,5 @@
-<%= form_for @post.path_variables, remote: @post.persisted? || !!(defined? remote) do |t|  %>
+<%= form_for @post.path_variables, remote: (@post.persisted? || !!(defined? remote)) do |t|  %>
+  <%= token_tag nil %>
   <div class="form-group">
     <%= t.label :content %>
     <%= t.cktext_area :content, class: "form-control", rows: 10 %>
