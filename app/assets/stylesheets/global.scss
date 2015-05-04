@@ -38,3 +38,10 @@ form ul.errors {
 
   background-color: $brand-warning;
 }
+
+a {
+    color: $primary-bordeau;
+    &:hover, &:focus {
+        color: $primary-bordeau;
+    }
+}
