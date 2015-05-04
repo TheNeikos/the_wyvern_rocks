@@ -45,3 +45,24 @@ a {
         color: $primary-bordeau;
     }
 }
+
+span {
+    &.text-size-1 {
+        font-size: 1rem;
+    }
+    &.text-size-2 {
+        font-size: 2rem;
+    }
+    &.text-size-3 {
+        font-size: 3rem;
+    }
+    &.text-size-4 {
+        font-size: 4rem;
+    }
+    &.text-size-5 {
+        font-size: 5rem;
+    }
+    &.text-size-6 {
+        font-size: 6rem;
+    }
+}
