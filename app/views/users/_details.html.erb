@@ -1,6 +1,7 @@
 <div class="details">
   <%= image_tag user.avatar.url(:medium), class: "avatar"%>
   <span class="name"><%= user.name %></span>
+  <% if policy(user).edit? %>
   <div class="btn-group pull-right" role="group">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
       Actions <span class="caret"></span>
@@ -9,4 +10,5 @@
       <li><%= link_to "Edit", edit_user_path(user) %></li>
     </ul>
   </div>
+<% end %>
 </div>
