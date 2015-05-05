@@ -114,6 +114,11 @@
     a {
         color: $primary-border-color;
     }
+
+    &.deleted {
+        opacity: 0.9;
+        border-color: $primary-red;
+    }
 }
 
 .box-post {
