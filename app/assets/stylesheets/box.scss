@@ -160,6 +160,32 @@
     }
 }
 
+.box-forum {
+    background-color: white;
+    border-color: $primary-border-color;
+
+    > .title {
+        box-shadow: inset 0 0 1px $primary-border-color;
+        background-color: $primary-yellow;
+        color: $primary-bordeau;
+    }
+
+    .content {
+        display: flex;
+    }
+
+    .box-last-post, .box-topic-count {
+        flex-grow: 1;
+        border: none;
+        padding: 0.25rem;
+        font-size: 1.25rem;
+    }
+
+    .box-last-post {
+        text-align: right;
+    }
+}
+
 .box-default {
     background-color: white;
     border-color: $primary-border-color;
@@ -173,8 +199,6 @@
     .content {
         padding: 1rem;
     }
-
-
 }
 
 .box-alone {

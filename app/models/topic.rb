@@ -10,8 +10,14 @@ class Topic < ActiveRecord::Base
   validates :forum, presence: true
   validates :user, presence: true
 
+  scope :ordered, -> { order(last_post_created_at: "DESC") }
+
+  before_save(on: :create) do
+    self.last_post_created_at = DateTime.now
+  end
+
   def last_post_time
-    posts.empty? ?  self.created_at : posts.last.created_at
+    self.last_post_created_at
   end
 
   def path_variables
