@@ -72,6 +72,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find(params[:id])
+    authorize @post.topic
+    redirect_to topic_path(@post.topic, anchor: "post_#{@post.id}")
+  end
+
   private
 
   def load_forum_and_topic
