@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :forums, only: [:show, :create, :update, :delete], shallow: true do
     resources :topics do
       post 'pin'
-      resources :posts, only: [:new, :create, :edit, :update, :destroy]
+      resources :posts, only: [:new, :create, :edit, :update, :destroy, :show]
     end
   end
 
