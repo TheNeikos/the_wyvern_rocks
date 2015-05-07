@@ -1,1 +1,7 @@
-$("#topic_<%= @topic.id %> .content").replaceWith("<%=j render "topics/new_form", locals: {remote: true} %>")
+$("#topic_<%= @topic.id %> .content").replaceWith("<%=j render "topics/new_form", locals: {remote: true} %>");
+$("textarea").sceditor({
+  plugins: "bbcode",
+  toolbar: "bold,italic|center|size|quote,image,link,unlink|source",
+  emoticonsEnabled: false,
+  style: ""
+});

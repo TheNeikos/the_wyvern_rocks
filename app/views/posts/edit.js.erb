@@ -1,1 +1,7 @@
-$("#post_<%= @post.id %> .content").replaceWith("<%=j render "posts/new_form" %>")
+$("#post_<%= @post.id %> .content").replaceWith("<%=j render "posts/new_form" %>");
+$("textarea").sceditor({
+  plugins: "bbcode",
+  toolbar: "bold,italic|center|size|quote,image,link,unlink|source",
+  emoticonsEnabled: false,
+  style: ""
+});

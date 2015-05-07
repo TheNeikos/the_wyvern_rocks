@@ -48,9 +48,6 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Pundit for Authorization
 gem 'pundit', '~> 0.3.0'
 
-# Use CKEditor as our Editor of choice
-gem 'ckeditor', '~> 4.1.1'
-
 # Use Paranoia so we don't lose data
 gem 'paranoia', '~> 2.0'
 
