@@ -15,5 +15,8 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
-//= require ckeditor/init
+//= require vendor/jquery.sceditor.min.js
+//= require vendor/jquery.sceditor.bbcode.min.js
+//= require vendor/bbcode.js
+//= require vendor/undo.js
 //= require_tree .
