@@ -1,0 +1,2 @@
+module McHelper
+end

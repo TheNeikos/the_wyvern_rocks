@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     resources :blog_posts
   end
 
+  get '/mc/:name' => 'mc#name', constraints: {format: 'json' }
+
   root 'index#dashboard'
 
   unless ENV['GOOGLE_SITE_VERIFICATION'].nil?
