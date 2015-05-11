@@ -59,6 +59,20 @@
           <% end %>
         </div>
         <div class="form-group">
+          <%= f.label :mc_name, "Minecraft Name", class: "control-label" %>
+          <%= f.text_field :mc_name, class: "form-control"  %>
+          <% if @user.errors.full_messages_for(:mc_name).any? %>
+            <ul class="errors">
+              <% @user.errors.full_messages_for(:mc_name).each do |e| %>
+                <li>
+                  <span class="glyphicon glyphicon-alert"></span>
+                  <small><%= e %></small>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+        <div class="form-group">
           <%= f.label :avatar, class: "control-label" %>
           <%= f.file_field :avatar, class: "form-control"  %>
           <% if @user.errors.full_messages_for(:avatar).any? %>
