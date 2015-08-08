@@ -6,11 +6,14 @@ class DashboardCategoriesController < ApplicationController
   end
 
   def create
+    # TODO: Implement
   end
 
   def update
+    # TODO: Implement
   end
 
   def delete
+    # TODO: Implement
   end
 end
