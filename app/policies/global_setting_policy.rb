@@ -1,5 +1,5 @@
 class GlobalSettingPolicy < ApplicationPolicy
   def index?
-    user and user.is_admin
+    valid_and_admin user
   end
 end
