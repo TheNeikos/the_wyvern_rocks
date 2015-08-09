@@ -1,7 +1,7 @@
 class DashboardCategoryPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user and user.is_admin
+      if valid_and_admin user
         scope.all
       else
         scope.all

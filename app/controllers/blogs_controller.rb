@@ -20,12 +20,12 @@ class BlogsController < ApplicationController
   end
 
   def edit
-    @blog = Blog.find(params[:id])
+    @blog = get_blog(params[:id])
     authorize @blog
   end
 
   def update
-    @blog = Blog.find(params[:id])
+    @blog = get_blog(params[:id])
     authorize @blog
     @blog.update(blog_params)
 
@@ -37,7 +37,7 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @blog = Blog.find(params[:id])
+    @blog = get_blog(params[:id])
     authorize @blog
   end
 
@@ -45,6 +45,10 @@ class BlogsController < ApplicationController
   end
 
   private
+
+  def get_blog id
+    Blog.find id
+  end
 
   def blog_params
     params.require(:blog).permit(:name, :description)

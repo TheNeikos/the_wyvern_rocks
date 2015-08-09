@@ -7,7 +7,7 @@ class ApplicationPolicy
   end
 
   def index?
-    user and user.is_admin
+    valid_and_admin user
   end
 
   def show?
@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    user and user.is_admin
+    valid_and_admin user
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user and user.is_admin
+    valid_and_admin user
   end
 
   def edit?
@@ -31,6 +31,10 @@ class ApplicationPolicy
   end
 
   def destroy?
+    valid_and_admin user
+  end
+
+  def valid_and_admin user
     user and user.is_admin
   end
 
@@ -48,6 +52,10 @@ class ApplicationPolicy
 
     def resolve
       scope
+    end
+
+    def valid_and_admin user
+      user and user.is_admin
     end
   end
 end
