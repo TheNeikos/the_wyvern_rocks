@@ -59,8 +59,6 @@ GEM
       sshkit (~> 1.2)
     capistrano-postgresql (4.2.0)
       capistrano (>= 3.0)
-    capistrano-puma (0.2.3)
-      capistrano (>= 3.0)
     capistrano-rails (1.1.2)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -68,6 +66,9 @@ GEM
       capistrano (~> 3.0)
       sshkit (~> 1.2)
     capistrano-stats (1.1.1)
+    capistrano3-puma (1.1.0)
+      capistrano (~> 3.0)
+      puma (>= 2.6)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.7)
@@ -229,9 +230,9 @@ DEPENDENCIES
   bullet
   capistrano-bundler
   capistrano-postgresql
-  capistrano-puma
   capistrano-rails
   capistrano-rvm
+  capistrano3-puma
   coffee-rails (~> 4.1.0)
   devise
   font-awesome-rails
