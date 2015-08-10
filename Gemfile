@@ -60,7 +60,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
-  gem 'capistrano-passenger'
+  gem 'capistrano-puma'
   gem 'capistrano-postgresql'
   gem 'quiet_assets' # Turns off the Rails asset pipeline log
   gem 'bullet' # help reduce sql query speeds
@@ -68,7 +68,7 @@ group :development do
 end
 
 group :production do
-  gem 'unicorn' # Use Unicorn as the app server
+  gem 'puma' # Use puma as the app server
 end
 
 group :test do
