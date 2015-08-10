@@ -4,9 +4,9 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{deploy@the.wyvern.rocks}
-role :web, %w{deploy@the.wyvern.rocks}
-role :db,  %w{deploy@the.wyvern.rocks}
+#role :app, %w{deploy@the.wyvern.rocks}
+#role :web, %w{deploy@the.wyvern.rocks}
+#role :db,  %w{deploy@the.wyvern.rocks}
 
 
 # Extended Server Syntax
@@ -15,7 +15,8 @@ role :db,  %w{deploy@the.wyvern.rocks}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'the.wyvern.rocks', user: 'deploy', roles: %w{web app}, my_property: :my_value
+#server 'the.wyvern.rocks', user: 'deploy', roles: %w{web app}, my_property: :my_value
+server '46.101.163.252', user: 'deploy', port: 22, roles: [:web, :app, :db], primary: true
 
 
 # Custom SSH Options
@@ -26,8 +27,8 @@ server 'the.wyvern.rocks', user: 'deploy', roles: %w{web app}, my_property: :my_
 # Global options
 # --------------
 set :ssh_options, {
-  keys: %w(/home/neikos/.ssh/id_rsa),
-  port: 12890,
+  keys: %w(~/.ssh/id_rsa),
+  port: 22,
   forward_agent: false,
   auth_methods: %w(publickey)
 }

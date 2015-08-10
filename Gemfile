@@ -60,7 +60,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
-  gem 'capistrano-puma'
+  gem 'capistrano3-puma'
   gem 'capistrano-postgresql'
   gem 'quiet_assets' # Turns off the Rails asset pipeline log
   gem 'bullet' # help reduce sql query speeds
