@@ -2,18 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+@mixin avatar {
+  .avatar {
+    border: 1px solid $gray;
+    border-radius: 5px;
+    display: inline-block;
+    max-width: 200px;
+    max-height: 200px;
+  }
+}
+
+
 .user-profile {
   .details {
     line-height: 200px;
     position: relative;
 
-    .avatar {
-      border: 1px solid $gray;
-      border-radius: 5px;
-      display: inline-block;
-      max-width: 200px;
-      max-height: 200px;
-    }
+    @include avatar;
 
     .name {
       font-size: 5rem;
@@ -30,11 +36,6 @@
     height: 200px;
     background-position: 50%;
     background-repeat: no-repeat;
-    border-top: 1px solid $gray;
-    border-bottom: 1px solid $gray;
-    box-shadow:
-        inset 0px 11px 8px -10px $darkgray,
-        inset 0px -11px 8px -10px $darkgray;
   }
 }
 
@@ -63,4 +64,8 @@
       right: 5px;
     }
   }
+}
+
+.user-index {
+    @include avatar;
 }

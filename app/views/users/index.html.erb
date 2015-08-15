@@ -1,5 +1,12 @@
-<ul>
-  <% @users.each do |u| %>
-    <li><%= link_to u.name, u %></li>
-  <% end %>
-</ul>
+<div class="container-fluid user-index">
+  <div class="row">
+    <%= column_do do %>
+      <div class="box box-users">
+        <div class="title">Users</div>
+        <div class="content">
+            <%= render @users %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
