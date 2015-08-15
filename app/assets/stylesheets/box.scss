@@ -152,11 +152,52 @@
     }
 
     .content, > form[class^="edit_"] {
-        padding: 0.5rem;
+        padding: 1.5rem;
 
         blockquote {
             border-left-color: $primary-border-color;
         }
+
+        p:last-child {
+            margin-bottom: 0px;
+        }
+
+        hr {
+            margin: 0;
+            margin-bottom: 1em;
+        }
+    }
+
+    .content > .box-post-content {
+        border: 0;
+
+        > .title {
+            border: 0;
+            padding: 0;
+
+            float: left;
+
+            text-align: center;
+
+            @include avatar;
+            @include make-xs-column(2);
+
+            .avatar {
+                width: 100%;
+                max-width: 200px;
+                min-width: 50px;
+            }
+
+        }
+
+        > .content {
+            float: right;
+            @include make-xs-column(10);
+
+            border-left: 1px solid lighten($darkgray, 50);
+        }
+
+        @include clearfix();
     }
 }
 

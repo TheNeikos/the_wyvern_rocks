@@ -1,18 +1,25 @@
 <div class="box box-post <%= "text-muted deleted" if post.deleted_at %>" id="post_<%= post.id %>">
   <div class="title">
-    <%= image_tag post.user.avatar.url(:thumb), class: "avatar" %>
     <%= link_to post.user.name, post.user %>, <%= distance_of_time_in_words_to_now post.created_at %> ago
-    <span class="pull-right btn-group" role="group" aria-label="actions">
-      <%= render 'shared/edit_button', model: post %>
-      <%= render 'shared/destroy_button', model: post %>
-      <% if post.deleted_at %>
-        <span class="label label-danger" style="display:inline-block;">
-          Deleted <%= distance_of_time_in_words_to_now post.deleted_at %> ago
-        </span>
-      <% end %>
-    </span>
   </div>
   <div class="content" data-raw="<%= post.content %>">
-    <%= raw post.content.bbcode_to_html %>
+    <div class="box box-post-content ">
+      <div class="title">
+        <%= image_tag post.user.avatar.url(:medium), class: "avatar" %>
+      </div>
+      <div class="content">
+        <%= raw post.content.bbcode_to_html %>
+        <hr>
+        <span class="pull-right btn-group" role="group" aria-label="actions">
+          <%= render 'shared/edit_button', model: post %>
+          <%= render 'shared/destroy_button', model: post %>
+          <% if post.deleted_at %>
+            <span class="label label-danger" style="display:inline-block;">
+              Deleted <%= distance_of_time_in_words_to_now post.deleted_at %> ago
+            </span>
+          <% end %>
+        </span>
+      </div>
+    </div>
   </div>
 </div>
